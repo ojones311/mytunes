@@ -6,3 +6,4 @@ router.get('/', (req, res, next) =>{
     res.send('users rt: Refer to the README on how to navigate routes')
 })
 
+module.exports = router 

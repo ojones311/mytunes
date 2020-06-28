@@ -4,6 +4,8 @@
   "description": "Mytunes is a full-stack application where users can post, comment on, and favorite songs that they are listening to.",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
+    "start:dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

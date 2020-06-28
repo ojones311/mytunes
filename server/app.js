@@ -5,11 +5,11 @@ const app = express();
 
 const PORT = 8000;
 
-const homeRouter = require('./api/home');
-const usersRouter = require('./api/users');
-const albumsRouter = require('./api/albums');
-const genresRouter = require('./api/genres');
-const commentsRouter = require('./api/comments');
+const homeRouter = require('./routes/home');
+const usersRouter = require('./routes/users');
+const albumsRouter = require('./routes/albums');
+const genresRouter = require('./routes/genres');
+const commentsRouter = require('./routes/comments');
 
 app.use(cors());
 
@@ -17,20 +17,19 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
-
 app.use('/', homeRouter);
 app.use('/users', usersRouter);
 app.use('/albums', albumsRouter);
-app.use('/genresRouter', genresRouter);
+app.use('/genres', genresRouter);
 app.use('/comments', commentsRouter);
 
 
-app.use((req, res, next) => {
+app.use(function (req, res, next) {
     res.status(404).json({
-        payload:"Error. Endpoint is unhandles by the server.",
-        err: true
+      payload: "Error. The endpoint or method is unhandled by the Server",
+      err: true
     })
-});
+  });
 
 app.use(function (err, req, res, next) {
     console.log(err)
