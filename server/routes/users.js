@@ -6,4 +6,41 @@ router.get('/', (req, res, next) =>{
     res.send('users rt: Refer to the README on how to navigate routes')
 })
 
+router.get('/all', async (req, res, next) => {
+    try {
+        const users = await Users.getAllUsers()
+        res.json({
+            payload: users,
+            msg: 'Retrieving all users',
+            err: false
+        })
+    } catch(error){
+        console.log('err', err)
+        res.json({
+            msg: 'Error retrieving users',
+            err: true
+        })
+    }
+})
+
+router.get('/id/:id', async (req, res, next) => {
+    const {id} = req.params
+    try{
+        const userById = await Users.getUserById(id)
+        res.json({
+            payload: userById,
+            msg: 'Retrieving user by id',
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg: 'Error retrieving user by id',
+            err: true
+        })
+    }
+})
+
+router.get()
+
 module.exports = router 
