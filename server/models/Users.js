@@ -31,7 +31,7 @@ createNewUser = async (user) => {
             avatar_url: user.avatar_url
         })
         console.log(user)
-        return user
+        return newUser
     }catch(error){
         console.log('err', error)
     }
@@ -39,8 +39,8 @@ createNewUser = async (user) => {
 
 editUserInfo = async (user) => {
     try{
-       let editUserInfo = await db.none(`UPDATE users SET username = $1, avatar_url = $2 WHERE id= $3`, [user.username, user.avatar_url, user.id])
-       return editUserInfo
+       let editedUser = await db.none(`UPDATE users SET username = $1, avatar_url = $2 WHERE id= $3`, [user.username, user.avatar_url, user.id])
+       return editedUser
     }catch(error){
         console.log('err', error)
     }
