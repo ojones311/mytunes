@@ -44,7 +44,7 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-router.patch('edit/:id', async (req, res, next) => {
+router.patch('/edit/:id', async (req, res, next) => {
     const {genre_name} = req.body
     const {id} = req.params
     try{
@@ -66,4 +66,6 @@ router.patch('edit/:id', async (req, res, next) => {
         })
     }
 })
+
+
 module.exports = router 
