@@ -41,6 +41,24 @@ router.get('/id/:id', async (req, res, next) => {
     }
 })
 
+router.get('/album/:id', async (req, res, next) => {
+    const {id} = req.params
+    try{
+        const usersByAlbum = await Users.getUsersByAlbum(id)
+        res.json({
+            payload: usersByAlbum,
+            msg: 'Success. Users retrieved',
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg: 'Couldnt get users by album',
+            err: true
+        })
+    }
+})
+
 router.post('/', async (req, res, next) => {
     const {username, avatar_url} = req.body 
     try{

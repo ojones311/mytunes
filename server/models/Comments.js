@@ -14,7 +14,7 @@ addNewComment = async (comment) => {
     try{
         insertQuery = `INSERT INTO comments(comment_body, user_id, commenter_id, album_id) VALUES($/comment_body/,$/user_id/, $/commenter_id/, $/album_id/)`
 
-        const newComment = await db.any(insertQuery, {
+        const newComment = await db.one(insertQuery, {
             comment_body: comment.comment_body,
             user_id: comment.user_id,
             commenter_id: comment.commenter_id,

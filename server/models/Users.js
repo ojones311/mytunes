@@ -19,6 +19,15 @@ getUserById = async (id) => {
     }
 }
 
+getUsersByAlbum = async (album_id) => {
+    try{
+        const usersAttachedToAlbum = await db.any('SELECT * FROM users_albums WHERE album_id = $1', [album_id])
+        return usersAttachedToAlbum 
+    }catch(error){
+        console.log('err', error)
+    }
+}
+
 createNewUser = async (user) => {
     try{
        let createdUser = await db.any('SELECT * FROM users WHERE username = $/username/', user)
@@ -51,6 +60,7 @@ editUserInfo = async (user) => {
 module.exports = {
     getAllUsers,
     getUserById,
+    getUsersByAlbum,
     createNewUser,
     editUserInfo
 }
