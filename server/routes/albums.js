@@ -33,7 +33,7 @@ router.get('/artist/:artist', async (req,res,next) => {
             err: false
         })
     }catch(error){
-        console.log('err', error)
+        console.log('rt err', error)
         res.json({
             msg: 'Error retrieving local albums'
         })
@@ -58,5 +58,24 @@ router.get('/userid/:userId', async (req, res, next) => {
     }
 })
 
+router.get('/genreid/:genreId', async (req, res, next) => {
+    const {genreId} = req.params
+    try{
+        const albumsByGenreId = await Albums.getLocalAlbumsByGenreId(genreId)
+        res.json({
+            payload: albumsByGenreId,
+            msg: 'Retrieving local albums by genre',
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg: 'Error retrieving albums by genreId',
+            err: true
+        })
+    }
+})
+
+router.post('/', async )
 
 module.exports = router 
