@@ -11,7 +11,7 @@ getAllAlbums = async () => {
 
 getLocalAlbumsByArtist =  async (artist) => {
     try{
-        const albumsbyArtist = await db.any('SELECT * FROM albums WHERE artist = $/artist/')
+        const albumsByArtist = await db.any('SELECT * FROM albums WHERE artist = $/artist/', [artist])
         return albumsByArtist
     }catch(error){
         console.log('err', error)
@@ -19,11 +19,17 @@ getLocalAlbumsByArtist =  async (artist) => {
 }
 
 getLocalAlbumsByUserId = async (userId) => {
-
+    try{
+        const albumsByUserId = await db.one('SELECT * FROM albums WHERE user_id = $/id/', [userId])
+        return albumsByUserId 
+    }catch(error){
+        console.log('err', err)
+    }
 }
 
 
 module.exports = {
     getAllAlbums,
-
+    getLocalAlbumsByArtist,
+    getLocalAlbumsByUserId
 }
