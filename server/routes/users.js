@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Users = require('../models/Users')
+const Users = require('../models/Users');
+const db = require('../db');
 
 router.get('/', (req, res, next) =>{
     res.send('users rt: Refer to the README on how to navigate routes')
@@ -104,6 +105,24 @@ router.patch('/edit/:id', async (req, res, next) => {
         console.log('err', error)
         res.json({
             message: 'Cannot edit user info something went wrong',
+            err: true
+        })
+    }
+})
+
+router.patch('/delete/:id', async (req, res, next) => {
+    const {id} = req.params
+    try{
+        const deleteUser = await Users.deleteUser(id)
+        res.json({
+            payload: deleteUser,
+            msg: 'Deleting user from storage',
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg: 'Couldnt delete user',
             err: true
         })
     }

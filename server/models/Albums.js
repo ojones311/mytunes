@@ -36,9 +36,37 @@ getLocalAlbumsByGenreId = async (genreId) => {
     }
 }
 
+addAlbumToProfile = async (album) => {
+    try{
+        insertQuery = 'INSERT INTO albums(spotify_id, title, artist, album_img_url, user_id, genre_id) VALUES ($/spotify_id/, $/title/, $/artist/, $/album_img_url/, $/user_id/, $/genre_id/) RETURNING *'
+        const newAlbum = await db.one(insertQuery, {
+            spotify_id: album.spotify_id,
+            title: album.title,
+            artist: album.artist,
+            album_img_url: album.album_img_url,
+            user_id: album.user_id,
+            genre_id: album.genre_id
+        })
+        return newAlbum
+    }catch(error){
+        console.log('err', error)
+    }
+}
+
+deleteAlbum = async (album) => {
+    try{
+        const deletedAlbum = await db.one()
+    }catch(error){
+        console.log('err', error)
+    }
+}
+
+
+
 module.exports = {
     getAllAlbums,
     getLocalAlbumsByArtist,
     getLocalAlbumsByUserId,
-    getLocalAlbumsByGenreId
+    getLocalAlbumsByGenreId,
+    addAlbumToProfile
 }

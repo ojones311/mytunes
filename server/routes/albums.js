@@ -76,6 +76,26 @@ router.get('/genreid/:genreId', async (req, res, next) => {
     }
 })
 
-router.post('/', async )
+router.post('/', async (req, res, next) => {
+    const {spotify_id, title, artist, album_img_url, user_id, genre_id} = req.body
+
+    try{
+        let album = {
+            spotify_id, title, artist, album_img_url, user_id, genre_id
+        }
+        let newAlbum = await Albums.addAlbumToProfile(album)
+        res.json({
+            payload: newAlbum,
+            msg: 'Posted a new album to the db',
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg: 'Error posting a new album',
+            err: true
+        })
+    }
+})
 
 module.exports = router 

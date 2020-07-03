@@ -55,12 +55,20 @@ editUserInfo = async (user) => {
     }
 }
 
-
+deleteUser = async (id) => {
+    try{
+        let deletedUser = await db.one('UPDATE users SET is_deleted = true WHERE id= $2', [id])
+        return deletedUser
+    }catch(error){
+        console.log('err', error)
+    }
+}
 
 module.exports = {
     getAllUsers,
     getUserById,
     getUsersByAlbum,
     createNewUser,
-    editUserInfo
+    editUserInfo,
+    deleteUser
 }
