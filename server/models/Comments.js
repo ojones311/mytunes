@@ -26,6 +26,9 @@ addNewComment = async (comment) => {
     }
 }
 
+deleteComment = async (id) => {
+    
+}
 
 module.exports = {
     getCommentsByAlbumId,

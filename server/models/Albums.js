@@ -53,9 +53,10 @@ addAlbumToProfile = async (album) => {
     }
 }
 
-deleteAlbum = async (album) => {
+deleteAlbum = async (id) => {
     try{
-        const deletedAlbum = await db.one()
+        const deletedAlbum = await db.one('UPDATE albums SET is_deleted = true WHERE id = $1', [id])
+        return deletedAlbum
     }catch(error){
         console.log('err', error)
     }
