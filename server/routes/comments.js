@@ -48,5 +48,21 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-
+router.patch('/delete/:id', async (req, res, next) => {
+    const {id} = req.params
+    try{
+        const deleteComment = await Comments.deleteComment(id)
+        res.json({
+            payload: deleteComment,
+            msg: 'Success.Deleting comment by id',
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg: 'Failed to delete comment',
+            err: true
+        })
+    }
+})
 module.exports = router 
