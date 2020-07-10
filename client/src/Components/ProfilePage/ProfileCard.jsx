@@ -4,7 +4,7 @@ import React from 'react'
 const ProfileCard = (props) => {
     return (
         <div className='profile-card'>
-            <img src={props.user.avatar} alt={props.user.username} height={'150px'} width={'150px'}/>
+            <img src={props.user.avatar} alt={props.user.username} height={'350px'} width={'350px'}/>
             <h4>{props.user.username}</h4>
         </div>
     )

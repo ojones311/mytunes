@@ -64,24 +64,23 @@ class Profile extends Component {
         const {displayedUser,userAlbums, showAlbums} = this.state
 
         let displayAlbums = showAlbums ? (
-            <div className='user-profile'>
-                    <ProfileCard user={displayedUser}/>
-            </div>
-        ): null
-
-        return(
-            <div className='profile-page'>
-                <h2>Profile Page </h2>
-                <button onClick={this.toggleAlbumList}>Show Albums</button>
-                {displayAlbums}
-                <div className='user-albums'>
+            <div className='user-albums'>
                     {userAlbums.map((album) => {
                         return (
                             <AlbumCard key={album.id} album={album}/>
                         )
                     })}
                 </div>
-                
+        ): null
+
+        return(
+            <div className='profile-page'>
+                <h2>Profile Page </h2>
+                <div className='user-profile'>
+                    <ProfileCard user={displayedUser}/>
+                </div>
+                <button onClick={this.toggleAlbumList}>Show Albums</button>
+                {displayAlbums}  
             </div>
         )
     }
