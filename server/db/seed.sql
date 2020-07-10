@@ -65,7 +65,7 @@ INSERT INTO albums (spotify_id, title, artist, album_img_url, user_id, genre_id,
 INSERT INTO albums (spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted) VALUES ('392p3shh2jkxUxY2VHvlH8', 'Channel Orange','Frank Ocean','https://i.scdn.co/image/ab67616d0000b2737aede4855f6d0d738012e2e5',4,7, false);
 INSERT INTO albums (spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted) VALUES ('6mm1Skz3JE6AXneya9Nyiv', 'Oracular Spectacular','MGMT','https://i.scdn.co/image/ab67616d0000b2738b32b139981e79f2ebe005eb',1,3, false);
 INSERT INTO albums (spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted) VALUES ('2QJmrSgbdM35R67eoGQo4j', '1989','Taylor Swift','https://i.scdn.co/image/ab67616d0000b273c79b600289a80aaef74d155d',4,6, false);
-INSERT INTO albums (spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted) VALUES ('2QJmrSgbdM35R67eoGQo4j', 'Golden Hour','Kacey Musgraves','https://i.scdn.co/image/ab67616d0000b273c79b600289a80aaef74d155d',1,5, false);
+INSERT INTO albums (spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted) VALUES ('7f6xPqyaolTiziKf5R5Z0c', 'Golden Hour','Kacey Musgraves','https://i.scdn.co/image/ab67616d000048512e35d25eb7288830d5540484',1,5, false);
 
 -- USERS AlBUMS RELATIONSHIP
 
