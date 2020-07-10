@@ -52,7 +52,7 @@ class App extends Component {
             <Route path="/profile/:id" render={this.renderProfilePage}/>
             <Route path='/users' render={this.renderUsersPage} />
             <Route path='/albums/all' render={this.renderAlbumListPage} />
-            <Route path='/albums/:id' render={this.renderAlbumPage} />
+            <Route path='/albums/id/:id' render={this.renderAlbumPage} />
             <Route path='/about' render={this.renderAboutPage} />
           </Switch>
         </div>

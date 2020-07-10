@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {Link} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import ProfileCard from '../ProfilePage/ProfileCard.jsx'
 import AlbumCard from '../Albums/AlbumCard.jsx'
 import axios from 'axios'
@@ -60,18 +60,14 @@ class Profile extends Component {
             showAlbums: !this.state.showAlbums
         })
     }
-    redirectToAlbumPage = () => {
-        console.log('Takes us to album pg')
-    }
 
     render(){
         const {displayedUser,userAlbums, showAlbums} = this.state
-
         let displayAlbums = showAlbums ? (
             <div className='user-albums'>
                     {userAlbums.map((album) => {
                         return (
-                            <AlbumCard key={album.id} album={album} user={displayedUser.id}/>
+                            <AlbumCard key={album.id} album={album} user={displayedUser.id} />
                         )
                     })}
                 </div>
@@ -91,4 +87,4 @@ class Profile extends Component {
 }
 
 
-export default Profile
+export default withRouter(Profile)
