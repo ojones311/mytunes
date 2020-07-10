@@ -75,6 +75,23 @@ router.get('/genreid/:genreId', async (req, res, next) => {
         })
     }
 })
+router.get('/albumId/:id', async (req, res, next) => {
+    const {id} = req.params
+    try{
+        const albumById = await Albums.getLocalAlbumByAlbumId(id)
+        res.json({
+            payload: albumById,
+            msg: 'Retrieving album by id',
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg: 'Error couldnt get album by id',
+            err: true
+        })
+    }
+})
 
 router.post('/', async (req, res, next) => {
     const {spotify_id, title, artist, album_img_url, user_id, genre_id} = req.body

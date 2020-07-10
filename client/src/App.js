@@ -6,6 +6,7 @@ import ProfilePage from './Components/ProfilePage/Profile.jsx'
 import UserList from './Components/Users/UserList.jsx'
 import AlbumList from './Components/Albums/AlbumList.jsx'
 import AlbumPage from './Components/Albums/AlbumPage.jsx'
+import AboutPage from './Components/About/About.jsx'
 import './App.css';
 
 class App extends Component {
@@ -37,6 +38,9 @@ class App extends Component {
     return <AlbumPage {...routeProps} userId={this.state.userId} />
   }
 
+  renderAboutPage = (routeProps) => {
+    return <AboutPage {...routeProps}/>
+  }
   render(){
     return (
       <div>
@@ -48,7 +52,8 @@ class App extends Component {
             <Route path="/profile/:id" render={this.renderProfilePage}/>
             <Route path='/users' render={this.renderUsersPage} />
             <Route path='/albums/all' render={this.renderAlbumListPage} />
-            <Route path='/albums/user/id' render={this.renderAlbumPage} />
+            <Route path='/albums/:id' render={this.renderAlbumPage} />
+            <Route path='/about' render={this.renderAboutPage} />
           </Switch>
         </div>
       </div>
