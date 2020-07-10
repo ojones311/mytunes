@@ -11,8 +11,8 @@ const NavBar = () => {
                 <Link to="/about">About</Link>{" "}
                 <Link to="/users">Users</Link>{" "}
                 <Link to="/profile">Profile</Link>{" "}
-                <Link to="/albums">Albums</Link>{" "}
-                <Link to="/albums/add">New Album</Link>
+                <Link to="/albums/all"> All Albums</Link>{" "}
+                <Link to="/albums/user/id">Album Page</Link>{" "}
             </nav>
         </div>
     )
