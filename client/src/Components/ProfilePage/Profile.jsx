@@ -8,8 +8,10 @@ class Profile extends Component {
            userId:'',
            userAlbums: [],
            displayedUser: {
+                userId: '',
                 username: '',
-                email: ''
+                email: '',
+                avatar: '',
            }
        } 
     }

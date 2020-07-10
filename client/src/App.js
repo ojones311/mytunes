@@ -12,7 +12,7 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      userId: null,
+      userId: 1,
       isUserLoggedIn: false,
       wasInitialized: false
     }
@@ -40,6 +40,7 @@ class App extends Component {
   render(){
     return (
       <div>
+        <h2>Welcome to Mytunes</h2>
         <NavBar />
         <div> 
           <Switch>
