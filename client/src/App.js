@@ -41,11 +41,11 @@ class App extends Component {
     return (
       <div>
         <h2>Welcome to Mytunes</h2>
-        <NavBar />
+        <NavBar userId={this.state.userId}/>
         <div> 
           <Switch>
             <Route exact path= "/" render={this.renderHomePage}/>
-            <Route path="/profile" render={this.renderProfilePage}/>
+            <Route path="/profile/:id" render={this.renderProfilePage}/>
             <Route path='/users' render={this.renderUsersPage} />
             <Route path='/albums/all' render={this.renderAlbumListPage} />
             <Route path='/albums/user/id' render={this.renderAlbumPage} />
