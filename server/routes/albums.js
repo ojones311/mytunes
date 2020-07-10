@@ -94,11 +94,11 @@ router.get('/albumId/:id', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-    const {spotify_id, title, artist, album_img_url, user_id, genre_id} = req.body
+    const {spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted} = req.body
 
     try{
         let album = {
-            spotify_id, title, artist, album_img_url, user_id, genre_id
+            spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted
         }
         let newAlbum = await Albums.addAlbumToProfile(album)
         res.json({

@@ -8,6 +8,7 @@ class AlbumPage extends Component {
         this.state = {
             userId: props.userId,
             albumId: props.match.params.id,
+            // album:props.album
             comments: [],
             numberOfComments:''
         }
@@ -21,10 +22,15 @@ class AlbumPage extends Component {
         console.log(this.props)
         const {userId, albumId} = this.state
         try{
-            // let response = await axios.get()
+            let response = await axios.get(`/albums/albumId/${albumId}`)
+            const album = response.data.payload
+            console.log(album)
         }catch(error){
             console.log('err', error)
         }
+    }
+    fetchCommentsByAlbumId = async() => {
+
     }
     render(){
         return(

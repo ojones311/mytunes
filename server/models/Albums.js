@@ -47,7 +47,7 @@ getLocalAlbumByAlbumId = async (albumId) => {
 
 addAlbumToProfile = async (album) => {
     try{
-        insertQuery = 'INSERT INTO albums(spotify_id, title, artist, album_img_url, user_id, genre_id) VALUES ($/spotify_id/, $/title/, $/artist/, $/album_img_url/, $/user_id/, $/genre_id/, $/is_deleted/) RETURNING *'
+        insertQuery = 'INSERT INTO albums(spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted) VALUES ($/spotify_id/, $/title/, $/artist/, $/album_img_url/, $/user_id/, $/genre_id/, $/is_deleted/) RETURNING *'
         const newAlbum = await db.one(insertQuery, {
             spotify_id: album.spotify_id,
             title: album.title,

@@ -23,7 +23,8 @@ CREATE TABLE albums (
     album_img_url VARCHAR NOT NULL,
     user_id INT REFERENCES users(id),
     genre_id INT REFERENCES genres(id),
-    is_deleted BOOLEAN 
+    is_deleted BOOLEAN
+    
 );
 
 CREATE TABLE users_albums (

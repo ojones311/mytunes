@@ -6,9 +6,12 @@ const AlbumCard = (props) => {
 
     const redirectToAlbumPage = () => {
         const {album} = props
+        
         history.push(`/albums/id/${album.id}`)
     }
-    
+    // if(){
+
+    // }
     return(
         <div className='album-card'>
             <img 
