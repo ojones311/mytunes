@@ -63,45 +63,52 @@ class AlbumPage extends Component {
         }
     }
     handleCommentInputValue = (event) => {
-        console.log(event.target.value)
+        // console.log(event.target.value)
         this.setState({
             commentInputVal: event.target.value
         })
     }
 
     postNewComment = async () => {
-        const {commentInputValue, userId, albumId} = this.state
+        const {commentInputVal, userId, albumId} = this.state
+    
         try{
             await axios.post('/comments', {
-            comment_body: commentInputValue,
-            user_id: userId, 
+            comment_body: commentInputVal,
+            commenter_id: userId, 
             album_id: albumId
             })
-            this.displayComments()
+            await this.fetchCommentsByAlbumId()
         }catch(error){
             console.log('fetch err', error)
         }
     }
     isFormCompleted = () => {
-        const {commentInputValue} = this.state
+        const {commentInputVal} = this.state
         return(
-            commentInputValue
+            commentInputVal
         )
     }
     clearAllForms= () => {
         console.log('Form cleared')
         this.setState({
-            commentInputValue: ''
+            commentInputVal: ''
         })
     }
     render(){
-        const {album, comments, numberOfComments} = this.state
+        const {album, comments, numberOfComments, commentInputVal} = this.state
         return(
             <div>
                 <div className='album-img'>
                     <h2>{album.title} by </h2>
                     <h4>{album.artist}</h4>
-                    <img src={album.album_img_url}/>
+                    <img src={album.album_img_url} width={'300px'} height={'300px'}/>
+                </div>
+                <div className='add_comment-form'>
+                <form onSubmit={this.handleFormSubmission}>
+                        <input id='comment-input' type='text' size={'50'} onChange={this.handleCommentInputValue} value={commentInputVal}></input>
+                        <button type='submit'>Add Comment</button>
+                    </form>
                 </div>
                 <div className='album-comments'>
                     <h4>{numberOfComments} comments</h4>
