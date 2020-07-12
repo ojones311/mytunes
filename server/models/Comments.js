@@ -10,6 +10,16 @@ getCommentsByAlbumId = async (album_id) => {
     }
 }
 
+getCommentsBySpotifyId = async (spotifyId) => {
+    try{
+        let selectQuery = 'SELECT users.username comments.comment_body, comments.album_id FROM comments INNER JOIN users ON users.id=comments.commenter_id WHERE (spotify_id= $1 AND comments.is_deleted= false)'
+
+        const commentsOfAlbum = await db.any(selectQuery, [spotifyId])
+        return commentsOfAlbum
+    }catch(error){
+        console.log('err', error)
+    }
+}
 addNewComment = async (comment) => {
     try{
         insertQuery = `INSERT INTO comments(comment_body, user_id, commenter_id, album_id) VALUES($/comment_body/,$/user_id/, $/commenter_id/, $/album_id/, $/is_deleted/)`
@@ -38,6 +48,7 @@ deleteComment = async (id) => {
 
 module.exports = {
     getCommentsByAlbumId,
+    getCommentsBySpotifyId,
     addNewComment,
     deleteComment
 }

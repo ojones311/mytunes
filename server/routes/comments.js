@@ -24,6 +24,24 @@ router.get('/album/:id', async (req, res, next) => {
     }
 })
 
+router.get('/spotify/:id', async (req, res, next) => {
+    const {id} = req.params
+    try{
+        const albumCommentsBySpotifyId = await Comments.getCommentsBySpotifyId(id)
+        res.json({
+            payload: albumCommentsBySpotifyId,
+            msg: `Getting all comments from album # ${id}`,
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg: 'Failed to get comments',
+            err: true
+        })
+    }
+})
+
 router.post('/', async (req, res, next) => {
     const {comment_body, user_id, commenter_id, album_id} = req.body
     try{
