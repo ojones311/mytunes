@@ -74,6 +74,7 @@ INSERT INTO users_albums (user_id, album_id) VALUES (1,1);
 INSERT INTO users_albums (user_id, album_id) VALUES (1,5);
 INSERT INTO users_albums (user_id, album_id) VALUES (1,7);
 INSERT INTO users_albums (user_id, album_id) VALUES (2,2);
+INSERT INTO users_albums (user_id, album_id) VALUES (2,5);
 INSERT INTO users_albums (user_id, album_id) VALUES (3,3);
 INSERT INTO users_albums (user_id, album_id) VALUES (4,4);
 INSERT INTO users_albums (user_id, album_id) VALUES (4,6);
