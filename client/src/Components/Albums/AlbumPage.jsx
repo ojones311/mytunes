@@ -11,7 +11,9 @@ class AlbumPage extends Component {
             albumId: props.match.params.id,
             album:'',
             comments: [],
-            numberOfComments:''
+            numberOfComments:'',
+            commentInputVal: '',
+            submittedComment: false
         }
     }
 
@@ -40,14 +42,60 @@ class AlbumPage extends Component {
             const comments = response.data.payload
             console.log(comments)
             this.setState({
-                comments: comments
+                comments: comments,
+                numberOfComments: comments.length
             })
         }catch(error){
             console.log('err', error)
         }
     }
+    handleFormSubmission = (event) => {
+        event.preventDefault()
+        if(this.isFormCompleted()){
+            console.log('Form submitted')
+            this.setState({
+                submitted: true
+            })
+            this.postNewComment()
+            this.clearAllForms()  
+        } else{
+            console.log('Form is not complete my guy')
+        }
+    }
+    handleCommentInputValue = (event) => {
+        console.log(event.target.value)
+        this.setState({
+            commentInputVal: event.target.value
+        })
+    }
+
+    postNewComment = async () => {
+        const {commentInputValue, userId, albumId} = this.state
+        try{
+            await axios.post('/comments', {
+            comment_body: commentInputValue,
+            user_id: userId, 
+            album_id: albumId
+            })
+            this.displayComments()
+        }catch(error){
+            console.log('fetch err', error)
+        }
+    }
+    isFormCompleted = () => {
+        const {commentInputValue} = this.state
+        return(
+            commentInputValue
+        )
+    }
+    clearAllForms= () => {
+        console.log('Form cleared')
+        this.setState({
+            commentInputValue: ''
+        })
+    }
     render(){
-        const {album, comments} = this.state
+        const {album, comments, numberOfComments} = this.state
         return(
             <div>
                 <div className='album-img'>
@@ -56,6 +104,7 @@ class AlbumPage extends Component {
                     <img src={album.album_img_url}/>
                 </div>
                 <div className='album-comments'>
+                    <h4>{numberOfComments} comments</h4>
                     {comments.map((comment) => {
                         return(
                             <Comment key={comment.id} commenter={comment.username} body={comment.comment_body}/>

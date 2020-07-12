@@ -36,7 +36,6 @@ CREATE TABLE users_albums (
 CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
     comment_body VARCHAR NOT NULL,
-    user_id INT REFERENCES users(id),
     commenter_id INT REFERENCES users(id),
     album_id INT REFERENCES albums(id),
     is_deleted BOOLEAN
@@ -81,13 +80,13 @@ INSERT INTO users_albums (user_id, album_id) VALUES (4,6);
 
 --COMMENTS
 
-INSERT INTO comments (comment_body, user_id, commenter_id, album_id, is_deleted) VALUES ('This is in my top 5 favorite albums of all time',1,2,1, false);
-INSERT INTO comments (comment_body, user_id, commenter_id, album_id, is_deleted) VALUES ('The soundtrack to my life',1,3,1, false);
-INSERT INTO comments (comment_body, user_id, commenter_id, album_id, is_deleted) VALUES ('U and Wesleys theory are the best songs on this',2,1,2, false);
-INSERT INTO comments (comment_body, user_id, commenter_id, album_id, is_deleted) VALUES ('An absolute masterpiece',2,4,2, false);
-INSERT INTO comments (comment_body, user_id, commenter_id, album_id, is_deleted) VALUES ('Queen Bey ftw',3,2,3, false);
-INSERT INTO comments (comment_body, user_id, commenter_id, album_id, is_deleted) VALUES ('Frank has the voice of an angel',4,2,4, false);
-INSERT INTO comments (comment_body, user_id, commenter_id, album_id, is_deleted) VALUES ('Channel Orange > Blond',4,3,4, false);
-INSERT INTO comments (comment_body, user_id, commenter_id, album_id, is_deleted) VALUES ('Sonically this album offers a lot',4,1,6, false);
-INSERT INTO comments (comment_body, user_id, commenter_id, album_id, is_deleted) VALUES ('In high school this album was everything',1,4,5, false);
-INSERT INTO comments (comment_body, user_id, commenter_id, album_id, is_deleted) VALUES ('Grammy was well deserved',1,3,7, false);
+INSERT INTO comments (comment_body, commenter_id, album_id, is_deleted) VALUES ('This is in my top 5 favorite albums of all time',2,1, false);
+INSERT INTO comments (comment_body, commenter_id, album_id, is_deleted) VALUES ('The soundtrack to my life',3,1, false);
+INSERT INTO comments (comment_body, commenter_id, album_id, is_deleted) VALUES ('U and Wesleys theory are the best songs on this',1,2, false);
+INSERT INTO comments (comment_body, commenter_id, album_id, is_deleted) VALUES ('An absolute masterpiece',4,2, false);
+INSERT INTO comments (comment_body, commenter_id, album_id, is_deleted) VALUES ('Queen Bey ftw',2,3, false);
+INSERT INTO comments (comment_body, commenter_id, album_id, is_deleted) VALUES ('Frank has the voice of an angel',2,4, false);
+INSERT INTO comments (comment_body, commenter_id, album_id, is_deleted) VALUES ('Channel Orange > Blond',3,4, false);
+INSERT INTO comments (comment_body, commenter_id, album_id, is_deleted) VALUES ('Sonically this album offers a lot',1,6, false);
+INSERT INTO comments (comment_body, commenter_id, album_id, is_deleted) VALUES ('In high school this album was everything',4,5, false);
+INSERT INTO comments (comment_body, commenter_id, album_id, is_deleted) VALUES ('Grammy was well deserved',3,7, false);

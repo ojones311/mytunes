@@ -22,11 +22,10 @@ getCommentsBySpotifyId = async (spotifyId) => {
 }
 addNewComment = async (comment) => {
     try{
-        insertQuery = `INSERT INTO comments(comment_body, user_id, commenter_id, album_id) VALUES($/comment_body/,$/user_id/, $/commenter_id/, $/album_id/, $/is_deleted/)`
+        insertQuery = `INSERT INTO comments(comment_body, commenter_id, album_id, is_deleted) VALUES($/comment_body/, $/commenter_id/, $/album_id/, $/is_deleted/) RETURNING *`
 
         const newComment = await db.one(insertQuery, {
             comment_body: comment.comment_body,
-            user_id: comment.user_id,
             commenter_id: comment.commenter_id,
             album_id: comment.album_id,
             is_deleted: false

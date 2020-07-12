@@ -43,11 +43,10 @@ router.get('/spotify/:id', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-    const {comment_body, user_id, commenter_id, album_id} = req.body
+    const {comment_body, commenter_id, album_id} = req.body
     try{
         let comment = {
             comment_body, 
-            user_id,
             commenter_id, 
             album_id
         }
