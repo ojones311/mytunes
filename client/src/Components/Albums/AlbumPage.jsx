@@ -49,6 +49,15 @@ class AlbumPage extends Component {
             console.log('err', error)
         }
     }
+    deleteComment = async (id) => {
+        // const {} = this.state
+        try{
+            let response = await axios.patch(`/comments/delete/${id}`)
+        }catch(error){
+            console.log('err',error)
+        }
+    }
+
     handleFormSubmission = (event) => {
         event.preventDefault()
         if(this.isFormCompleted()){
@@ -114,7 +123,7 @@ class AlbumPage extends Component {
                     <h4>{numberOfComments} comments</h4>
                     {comments.map((comment) => {
                         return(
-                            <Comment key={comment.id} commenter={comment.username} body={comment.comment_body}/>
+                            <Comment key={comment.id} commenter={comment.username} body={comment.comment_body} deleteComment={this.deleteComment}/>
                         )    
                     })}
                 </div>
