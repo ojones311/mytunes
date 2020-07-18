@@ -6,7 +6,7 @@ const Comment = (props) => {
         <div>
             <h4>{props.commenter}</h4>
             <p>{props.body}</p>
-            <button onClick={()=> props.deleteComment(props.key)}>Delete</button>
+            <button onClick={()=> props.deleteComment(props.id)}>Delete</button>
         </div>
     )
 }

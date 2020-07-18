@@ -123,7 +123,7 @@ class AlbumPage extends Component {
                     <h4>{numberOfComments} comments</h4>
                     {comments.map((comment) => {
                         return(
-                            <Comment key={comment.id} commenter={comment.username} body={comment.comment_body} deleteComment={this.deleteComment}/>
+                            <Comment key={comment.id} id={comment.id} commenter={comment.username} body={comment.comment_body} deleteComment={this.deleteComment}/>
                         )    
                     })}
                 </div>
