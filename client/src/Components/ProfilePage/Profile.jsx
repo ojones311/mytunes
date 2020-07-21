@@ -16,7 +16,7 @@ class Profile extends Component {
                 username: '',
                 avatar: '',
            },
-           showAlbums: false
+           showAlbums: true
        } 
     }
     componentDidMount = async () => {
@@ -79,7 +79,7 @@ class Profile extends Component {
                 <div className='user-profile'>
                     <ProfileCard user={displayedUser}/>
                 </div>
-                <button onClick={this.toggleAlbumList}>Show Albums</button>
+                {/* <button onClick={this.toggleAlbumList}>Toggle Albums</button> */}
                 {displayAlbums}  
             </div>
         )

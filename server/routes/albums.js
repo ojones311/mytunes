@@ -133,5 +133,17 @@ router.patch('/delete/:id', async (req, res, next) => {
     }
 })
 
+//Search albums route make req to Spotify API
+router.post('/search', async (req, res, next) => {
+    try{
+
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg: 'Error trying to make request to Spotify',
+            err: true
+        })
+    }
+})
 
 module.exports = router 
