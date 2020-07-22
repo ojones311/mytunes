@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Albums = require('../models/Albums')
+const Auth = require('../models/Auth')
 
 router.get('/', (req, res, next) =>{
     res.send('users rt: Refer to the README on how to navigate routes')
@@ -134,9 +135,12 @@ router.patch('/delete/:id', async (req, res, next) => {
 })
 
 //Search albums route make req to Spotify API
-router.post('/search', async (req, res, next) => {
+router.get('/search', async (req, res, next) => {
     try{
-
+        const authToken = await Auth.getSpotifyCredentials()
+        if(authToken){
+            let response = await axios.get()
+        }
     }catch(error){
         console.log('err', error)
         res.json({

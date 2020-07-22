@@ -37,7 +37,9 @@ class App extends Component {
   renderAlbumPage = (routeProps) => {
     return <AlbumPage {...routeProps} userId={this.state.userId} />
   }
-
+  renderAddAlbumPage = (routeProps) => {
+    return <AddAlbum
+  }
   renderAboutPage = (routeProps) => {
     return <AboutPage {...routeProps}/>
   }
@@ -53,6 +55,7 @@ class App extends Component {
             <Route path='/users' render={this.renderUsersPage} />
             <Route path='/albums/all' render={this.renderAlbumListPage} />
             <Route path='/albums/id/:id' render={this.renderAlbumPage} />
+            <Route path='/add_album' render={this.renderAddAlbumPage}/>
             <Route path='/about' render={this.renderAboutPage} />
           </Switch>
         </div>

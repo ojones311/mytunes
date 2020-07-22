@@ -2,12 +2,16 @@ import React,{Component} from 'react'
 
 
 class AddAlbum extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
-
+            userId: props.userId,
+            searchBarValue: '',
+            searchResults: [],
+            submittedSearch: false
         }
     }
+    
     render(){
         return(
             <div>
