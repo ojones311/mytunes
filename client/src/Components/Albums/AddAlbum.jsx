@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-
+const qs = require('querystring')
 
 class AddAlbum extends Component {
     constructor(props){
@@ -10,6 +10,10 @@ class AddAlbum extends Component {
             searchResults: [],
             submittedSearch: false
         }
+    }
+
+    componentDidMount = async () => {
+        // this.props.getSpotifyCredentials()
     }
     
     render(){

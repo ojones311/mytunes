@@ -4,7 +4,7 @@ const qs = require('querystring')
 const secrets = require('../secrets.js')
 
 
-getSpotifyCredentials = async () => {
+ getSpotifyCredentials = async () => {
     try{
         let response = await axios.post('https://accounts.spotify.com/api/token', qs.stringify(secrets.data), secrets.config)
         console.log('response =>', response.data)
