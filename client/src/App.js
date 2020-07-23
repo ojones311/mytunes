@@ -8,7 +8,7 @@ import AlbumList from './Components/Albums/AlbumList.jsx'
 import AlbumPage from './Components/Albums/AlbumPage.jsx'
 import AddAlbum from './Components/Albums/AddAlbum.jsx'
 import AboutPage from './Components/About/About.jsx'
-import {config, data} from 'mytunes/server/secrets.js'
+import {config, data} from './secrets.js'
 import './App.css';
 import axios from 'axios'
 
@@ -21,24 +21,16 @@ class App extends Component {
     this.state = {
       userId: 1,
       isUserLoggedIn: false,
-      wasInitialized: false
+      wasInitialized: false,
+      config: config,
+      data: data
     }
   }
 
-   config = {
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        
-    }
-}
-
-  data = {
-    grant_type: 'client_credentials',
-}
 
   getSpotifyCredentials = async () => {
     try{
-        let response = await axios.post('https://accounts.spotify.com/api/token', qs.stringify(this.data), this.config)
+        let response = await axios.post('https://accounts.spotify.com/api/token', qs.stringify(this.state.data), this.state.config)
         console.log('response =>', response.data)
 
         if(response.status === 200){
@@ -72,7 +64,7 @@ class App extends Component {
     return <AlbumPage {...routeProps} userId={this.state.userId} />
   }
   renderAddAlbumPage = (routeProps) => {
-    return <AddAlbum {...routeProps} userId={this.state.userId} getSpotifyCredentials={this.getSpotifyCredentials} config={this.config} data={this.data}/>
+    return <AddAlbum {...routeProps} userId={this.state.userId} getSpotifyCredentials={this.getSpotifyCredentials} config={this.state.config} data={this.state.data}/>
   }
   renderAboutPage = (routeProps) => {
     return <AboutPage {...routeProps}/>
