@@ -6,39 +6,48 @@ class AddAlbum extends Component {
         super(props)
         this.state = {
             userId: props.userId,
-            credentials: '',
+            credentials: null,
             searchBarValue: '',
             searchResults: [],
             submittedSearch: false,
             credentialsNeeded: true,
-            config: props.config,
-            data: props.data,
-            searchType: 'album'
+            searchType: 'album',
+            spotifyId:''
         }
     }
 
     componentDidMount = async () => {
-        // this.props.getSpotifyCredentials()
-        // await this.updateCredentials()
+        await this.updateCredentials()
         // await this.getSpotifyId()
     }
 
     handleAlbumSearch = async(event) => {
         event.preventDefault()
         if(this.isFormCompleted()){
-            console.log('Search pending')
+            console.log('Album Search pending')
             this.setState({
                 submittedSearch: true
             })
-            this.getSpotifyId()
+           await this.getSpotifyId()
+           this.clearSearchBar()
+        }else{
+            console.log('Complete search to continue')
+        }
+    }
+
+    handleArtistSearch =  async(event) => {
+        event.preventDefault()
+        if(this.isFormCompleted()){
+            console.log('Artist Search pending')
+            this.setState({
+                submittedSearch: true
+            })
+           await this.getSpotifyId()
 
             this.clearSearchBar()
         }else{
             console.log('Complete search to continue')
         }
-    }
-    handleArtistSearch =  async(event) => {
-        
     }
     handleSearchValue = async (event) => {
         this.setState({
@@ -58,36 +67,63 @@ class AddAlbum extends Component {
             searchBarValue: ''
         })
     }
+
     updateCredentials = async() => {
-        const {config, data} = this.state
-        // console.log('config =>', config)
-        // console.log('data =>', data)
-        let credentials = await this.props.getSpotifyCredentials()
-        console.log(credentials)
+        let updatedCredentials = await this.props.getSpotifyCredentials()
+        console.log(updatedCredentials)
         this.setState({
-            credentials: credentials
+            credentials: updatedCredentials
         })
     }
+
     getSpotifyId = async () => {
-        const {credentials} = this.state
-        console.log(credentials)
+        const {credentials, searchBarValue} = this.state
+        console.log('type',credentials.token_type)
+        console.log('access', credentials.access_token)
         try{
-            let response = await axios.get('https://api.spotify.com/v1/search', {headers: {Authorization: credentials.token_type + '' + credentials.access_token}})
-            console.log('res = >', response) 
+            let response = await axios.get(`https://api.spotify.com/v1/search`, {
+                params: {
+                    q: searchBarValue,
+                    type: 'artist',
+                    limit: 1
+                },
+                headers: {
+                    Authorization: credentials.token_type + ' ' + credentials.access_token
+                }
+            })  
+            console.log('res = >', response.data) 
+            let id = response.data.artists.items[0].id
+
+            this.setState({
+                spotifyId: id
+            })
         }catch(error){
             console.log('err', error)
         }
     }
 
-    // getAlbumFromSpotify =  async () => {
-    //     const {config, data} = this.state
-    //     try{
-    //         let response = await axios.get(`https://api.spotify.com/v1/albums/${'392p3shh2jkxUxY2VHvlH8'}`, {headers: {Authorization: type + '' +token}})
-    //         console.log(response.data)
-    //     }catch(error){
-    //         console.log('err', error)
-    //     }
-    // }
+    getAlbumsByArtistId =  async () => {
+        const {credentials, spotifyId} = this.state
+        try{
+            let response = await axios.get(`https://api.spotify.com/v1/artists/${spotifyId}albums`, {   
+                headers: {
+                    Authorization: credentials.token_type + ' ' + credentials.access_token
+                }
+            })
+            console.log(response.data)
+        }catch(error){
+            console.log('err', error)
+        }
+    }
+
+    getAlbumByAlbumId = async () => {
+        const {spotifyId} = this.state
+        try{
+            let  response = await axios.get(`https://api/spotify.com/v1/albums${spotifyId}`)
+        }catch(error){
+            console.log('err', error)
+        }
+    }
     searchByArtist = () => {
         this.setState({
             searchType: 'artist'
@@ -109,7 +145,7 @@ class AddAlbum extends Component {
                     <button onClick={this.searchByArtist}>Search by artist</button>
                     <button onClick={this.searchByAlbum}>Search by album name</button>
                     <div>
-                        <form onSubmit={this.handleSearch}>
+                        <form onSubmit={this.handleAlbumSearch}>
                             <input id='album-search' type='text' placeholder='Enter album name' size={'50'} onChange={this.handleSearchValue} value={searchBarValue}></input>
                             <button type='submit'>Search</button>
                         </form>
@@ -123,7 +159,7 @@ class AddAlbum extends Component {
                     <button onClick={this.searchByArtist}>Search by artist</button>
                     <button onClick={this.searchByAlbum}>Search by album name</button>
                     <div>
-                        <form onSubmit={this.handleSearch}>
+                        <form onSubmit={this.handleArtistSearch}>
                             <input id='album-search' type='text' placeholder='Enter artist name' size={'50'} onChange={this.handleSearchValue} value={searchBarValue}></input>
                             <button type='submit'>Search</button>
                         </form>
