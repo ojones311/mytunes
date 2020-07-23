@@ -8,8 +8,10 @@ import AlbumList from './Components/Albums/AlbumList.jsx'
 import AlbumPage from './Components/Albums/AlbumPage.jsx'
 import AddAlbum from './Components/Albums/AddAlbum.jsx'
 import AboutPage from './Components/About/About.jsx'
+import {config, data} from 'mytunes/server/secrets.js'
 import './App.css';
 import axios from 'axios'
+
 
 const qs = require('querystring')
 
@@ -26,7 +28,7 @@ class App extends Component {
    config = {
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic MjY0MzkyZmNlODMxNGMwZmI4YWFhNDJiMGJmYzA2ZDE6ODI3N2JkNzhjZTNiNGQ5YmJhNGJiZTY5MDRjZWY2ODM='
+        
     }
 }
 
