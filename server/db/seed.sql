@@ -59,6 +59,7 @@ INSERT INTO genres (genre_name) VALUES ('Pop'); --6
 INSERT INTO genres (genre_name) VALUES ('R&B'); --7
 
 --ALBUMS
+
 INSERT INTO albums (spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted) VALUES ('79dL7FLiJFOO0EoehUHQBv','Currents','Tame Impala','https://i.scdn.co/image/ab67616d000048519e1cfc756886ac782e363d79',1,3, false);
 INSERT INTO albums (spotify_id, title, artist, album_img_url, user_id, genre_id,is_deleted) VALUES ('7ycBtnsMtyVbbwTfJwRjSP','To Pimp A Butterfly','Kendrick Lamar','https://i.scdn.co/image/ab67616d00001e02cdb645498cd3d8a2db4d05e1',2,1, false);
 INSERT INTO albums (spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted) VALUES ('7dK54iZuOxXFarGhXwEXfF','Lemonade','Beyonce','https://i.scdn.co/image/ab67616d0000b27389992f4d7d4ab94937bf9e23',3,6, false);

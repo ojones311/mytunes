@@ -6,7 +6,7 @@ const Auth = require('../models/Auth')
 router.get('/', (req, res, next) =>{
     res.send('users rt: Refer to the README on how to navigate routes')
 })
-
+//use pagination to limit data from queries 
 router.get('/all', async (req, res, next) => {
     try{
         const albums = await Albums.getAllAlbums()
