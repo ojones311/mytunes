@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import SearchResult from './SearchResult.jsx'
 import axios from 'axios'
 
 class AddAlbum extends Component {
@@ -15,11 +16,8 @@ class AddAlbum extends Component {
             spotifyId:''
         }
     }
-
+//Fix display data 
     componentDidMount = async () => {
-        // if(!this.state.credentials){
-        //     await this.updateCredentials()
-        // }
         await this.updateCredentials()
     }
 
@@ -31,7 +29,7 @@ class AddAlbum extends Component {
                 submittedSearch: true
             })
            await this.getSpotifyId('album')
-        //    await this.getAlbumByAlbumId()
+           await this.getAlbumByAlbumId()
            this.clearSearchBar()
         }else{
             console.log('Complete search to continue')
@@ -108,6 +106,7 @@ class AddAlbum extends Component {
 
     configureURL = async (url,params) => {
         const {credentials, spotifyId} = this.state
+
         if(spotifyId.artists){
             url = url.replace(`{spotifyId}`,spotifyId.artists.items[0].id)
         }else if(spotifyId.albums)
@@ -145,7 +144,7 @@ class AddAlbum extends Component {
             console.log(data)
 
             this.setState({
-                searchResults: data.album.items
+                searchResults: data
             })
         }catch(error){
             console.log('err', error)
@@ -162,18 +161,22 @@ class AddAlbum extends Component {
             searchType: 'album'
         })
     }
-    displaySearchResults = () => {
-        const {searchResults} = this.state
-        searchResults.map(elem => {
-            return (
-                <h4>{}</h4>
-            )
-        })
-        
-    }
+
+   albumSearchResult = () => {
+       const {submittedSearch, searchResults} = this.state
+       if (submittedSearch){
+           console.log(searchResults)
+           return(
+               <div>
+                    <SearchResult name={searchResults.name} image={searchResults.images[0].url} releaseDate={searchResults.release_date} totalTracks={searchResults.total_tracks}/>
+                </div>
+           )
+       }
+   }
     render(){
         const {searchType ,searchBarValue, searchResults} = this.state
         if(searchType === 'album'){
+            // console.log(searchResults)
             return(
                 <div>
                     <h2>Search by artist or album </h2>
@@ -185,9 +188,12 @@ class AddAlbum extends Component {
                             <button type='submit'>Search</button>
                         </form>
                     </div>
+                    <div>
+                       {this.albumSearchResult()}
+                    </div>
                 </div>
             )
-        }else if(searchType === 'artist'){
+        }else if(searchType === 'artist' ){
             return(
                 <div>
                     <h2>Search by artist or album </h2>
@@ -198,6 +204,13 @@ class AddAlbum extends Component {
                             <input id='album-search' type='text' placeholder='Enter artist name' size={'50'} onChange={this.handleSearchValue} value={searchBarValue}></input>
                             <button type='submit'>Search</button>
                         </form>
+                        <div>
+                            {searchResults.map((elem) => {
+                           return (
+                               <SearchResult key={elem.id} name={elem.name} image={elem.images[1].url} releaseDate={elem.release_date} totalTracks={elem.total_tracks}/>
+                           )
+                        })}
+                        </div>
                     </div>
                 </div>
             )
