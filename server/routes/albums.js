@@ -99,10 +99,10 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-router.patch('/delete/:id', async (req, res, next) => {
-    const {id} = req.params
+router.patch('/delete/:albumId/:userId', async (req, res, next) => {
+    const {albumId, userId} = req.params
     try{
-        const deleteAlbum = await Albums.deleteAlbum(id)
+        const deleteAlbum = await Albums.deleteAlbum(albumId,userId)
         res.json({
             payload: deleteAlbum,
             msg: 'Success. Deleted album',

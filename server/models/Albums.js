@@ -2,7 +2,9 @@ const db = require('../db/index')
 
 getAllAlbums = async () => {
     try{
-        const albums = await db.any('SELECT * FROM albums')
+        let query = 'SELECT * FROM albums'
+
+        const albums = await db.any(query)
         return albums 
     }catch(error){
         console.log('err', error)
@@ -57,9 +59,9 @@ addAlbumToProfile = async (album) => {
     }
 }
 
-deleteAlbum = async (id) => {
+deleteAlbum = async (albumId, userId) => {
     try{
-        const deletedAlbum = await db.one('UPDATE albums SET is_deleted = true WHERE id = $1', [id])
+        const deletedAlbum = await db.one('UPDATE users_albums SET is_deleted = true WHERE (album_id = $1 AND user_id= $2)', [albumId, userId])
         return deletedAlbum
     }catch(error){
         console.log('err', error)

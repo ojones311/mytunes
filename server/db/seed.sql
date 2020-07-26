@@ -11,7 +11,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE albums (
-    id VARCHAR PRIMARY KEY,
+    id VARCHAR PRIMARY KEY UNIQUE,
     title VARCHAR NOT NULL,
     artist VARCHAR NOT NULL,
     album_img_url VARCHAR NOT NULL
@@ -60,6 +60,9 @@ INSERT INTO users_albums (user_id, album_id, is_deleted) VALUES (2,'6mm1Skz3JE6A
 INSERT INTO users_albums (user_id, album_id, is_deleted) VALUES (3,'7dK54iZuOxXFarGhXwEXfF', false);
 INSERT INTO users_albums (user_id, album_id, is_deleted) VALUES (4,'392p3shh2jkxUxY2VHvlH8', false);
 INSERT INTO users_albums (user_id, album_id, is_deleted) VALUES (4,'2QJmrSgbdM35R67eoGQo4j', false);
+INSERT INTO users_albums (user_id, album_id, is_deleted) VALUES (3,'7ycBtnsMtyVbbwTfJwRjSP', false);
+INSERT INTO users_albums (user_id, album_id, is_deleted) VALUES (3,'392p3shh2jkxUxY2VHvlH8', false);
+
 
 --COMMENTS
 

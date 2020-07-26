@@ -79,7 +79,6 @@ class Profile extends Component {
                 <div className='user-profile'>
                     <ProfileCard user={displayedUser}/>
                 </div>
-                {/* <button onClick={this.toggleAlbumList}>Toggle Albums</button> */}
                 {displayAlbums}  
             </div>
         )
