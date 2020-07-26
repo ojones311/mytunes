@@ -5,8 +5,8 @@ const SearchResult = (props) => {
         <div>
             <img src={props.image} alt='album pic'/>
             <h4>{props.name}</h4>
-            <p>{props.releaseDate}</p>
-            <p>{props.totalTracks}</p>
+            <p>Release Date: {props.releaseDate}</p>
+            <p>{props.totalTracks} Tracks</p>
         </div>
     )
 }

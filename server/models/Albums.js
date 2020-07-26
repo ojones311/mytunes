@@ -2,7 +2,7 @@ const db = require('../db/index')
 
 getAllAlbums = async () => {
     try{
-        const albums = await db.any('SELECT * FROM albums WHERE is_deleted = false')
+        const albums = await db.any('SELECT * FROM albums')
         return albums 
     }catch(error){
         console.log('err', error)
@@ -11,7 +11,9 @@ getAllAlbums = async () => {
 
 getLocalAlbumsByArtist =  async (artist) => {
     try{
-        const albumsByArtist = await db.any('SELECT * FROM albums WHERE (artist = $1 AND is_deleted = false)', [artist])
+        let query = 'SELECT albums.id, albums.title, albums.artist, album_img_url, users_albums.user_id, users_albums.is_deleted FROM albums FULL OUTER JOIN users_albums ON albums.id=users_albums.album_id WHERE (artist=$1 AND is_deleted=false)'
+
+        const albumsByArtist = await db.any(query, [artist])
         return albumsByArtist
     }catch(error){
         console.log('mod err', error)
@@ -20,25 +22,20 @@ getLocalAlbumsByArtist =  async (artist) => {
 
 getLocalAlbumsByUserId = async (userId) => {
     try{
-        const albumsByUserId = await db.any('SELECT * FROM albums WHERE (user_id = $1 AND is_deleted = false)', [userId])
+        let query = 'SELECT albums.id, albums.title, albums.artist, album_img_url, users_albums.user_id, users_albums.is_deleted FROM albums FULL OUTER JOIN users_albums ON albums.id=users_albums.album_id WHERE (user_id=$1 AND is_deleted=false)'
+
+        const albumsByUserId = await db.any(query, [userId])
         return albumsByUserId 
     }catch(error){
         console.log('err', error)
     }
 }
 
-getLocalAlbumsByGenreId = async (genreId) => {
-    try{
-        const albumsByGenreId = await db.any('SELECT * FROM albums WHERE (genre_id = $1 AND is_deleted = false)', [genreId])
-        return albumsByGenreId
-    } catch(error){
-        console.log('err', error)
-    }
-}
-
 getLocalAlbumByAlbumId = async (albumId) => {
     try{
-        const albumById = await db.one('SELECT * FROM albums WHERE (id= $1 AND is_deleted = false)', [albumId])
+        let query = 'SELECT albums.id, albums.title, albums.artist, album_img_url, users_albums.user_id, users_albums.is_deleted FROM albums FULL OUTER JOIN users_albums ON albums.id=users_albums.album_id WHERE (album_id=$1 AND is_deleted=false)'
+
+        const albumById = await db.one(query, [albumId])
         return albumById
     }catch(error){
         console.log('err', error)
@@ -47,15 +44,12 @@ getLocalAlbumByAlbumId = async (albumId) => {
 
 addAlbumToProfile = async (album) => {
     try{
-        insertQuery = 'INSERT INTO albums(spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted) VALUES ($/spotify_id/, $/title/, $/artist/, $/album_img_url/, $/user_id/, $/genre_id/, $/is_deleted/) RETURNING *'
+        insertQuery = 'INSERT INTO albums(id, title, artist, album_img_url) VALUES ($/id/, $/title/, $/artist/, $/album_img_url/) RETURNING *'
         const newAlbum = await db.one(insertQuery, {
-            spotify_id: album.spotify_id,
+            id: album.id,
             title: album.title,
             artist: album.artist,
             album_img_url: album.album_img_url,
-            user_id: album.user_id,
-            genre_id: album.genre_id,
-            is_deleted: false
         })
         return newAlbum
     }catch(error){
@@ -78,7 +72,6 @@ module.exports = {
     getAllAlbums,
     getLocalAlbumsByArtist,
     getLocalAlbumsByUserId,
-    getLocalAlbumsByGenreId,
     getLocalAlbumByAlbumId,
     addAlbumToProfile,
     deleteAlbum

@@ -59,23 +59,6 @@ router.get('/userid/:userId', async (req, res, next) => {
     }
 })
 
-router.get('/genreid/:genreId', async (req, res, next) => {
-    const {genreId} = req.params
-    try{
-        const albumsByGenreId = await Albums.getLocalAlbumsByGenreId(genreId)
-        res.json({
-            payload: albumsByGenreId,
-            msg: 'Retrieving local albums by genre',
-            err: false
-        })
-    }catch(error){
-        console.log('err', error)
-        res.json({
-            msg: 'Error retrieving albums by genreId',
-            err: true
-        })
-    }
-})
 router.get('/albumId/:id', async (req, res, next) => {
     const {id} = req.params
     try{
@@ -95,11 +78,11 @@ router.get('/albumId/:id', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-    const {spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted} = req.body
+    const {id, title, artist, album_img_url} = req.body
 
     try{
         let album = {
-            spotify_id, title, artist, album_img_url, user_id, genre_id, is_deleted
+            id, title, artist, album_img_url
         }
         let newAlbum = await Albums.addAlbumToProfile(album)
         res.json({
