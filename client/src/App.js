@@ -6,7 +6,7 @@ import ProfilePage from './Components/ProfilePage/Profile.jsx'
 import UserList from './Components/Users/UserList.jsx'
 import AlbumList from './Components/Albums/AlbumList.jsx'
 import AlbumPage from './Components/Albums/AlbumPage.jsx'
-import AddAlbum from './Components/Albums/AddAlbum.jsx'
+import AlbumSearch from './Components/Albums/AlbumSearch.jsx'
 import AboutPage from './Components/About/About.jsx'
 import {config, data} from './secrets.js'
 import './App.css';
@@ -63,8 +63,8 @@ class App extends Component {
   renderAlbumPage = (routeProps) => {
     return <AlbumPage {...routeProps} userId={this.state.userId} />
   }
-  renderAddAlbumPage = (routeProps) => {
-    return <AddAlbum {...routeProps} userId={this.state.userId} getSpotifyCredentials={this.getSpotifyCredentials} config={this.state.config} data={this.state.data}/>
+  renderAlbumSearchPage = (routeProps) => {
+    return <AlbumSearch {...routeProps} userId={this.state.userId} getSpotifyCredentials={this.getSpotifyCredentials} config={this.state.config} data={this.state.data}/>
   }
   renderAboutPage = (routeProps) => {
     return <AboutPage {...routeProps}/>
@@ -81,7 +81,7 @@ class App extends Component {
             <Route path='/users' render={this.renderUsersPage} />
             <Route path='/albums/all' render={this.renderAlbumListPage} />
             <Route path='/albums/id/:id' render={this.renderAlbumPage} />
-            <Route path='/albums/add_album' render={this.renderAddAlbumPage}/>
+            <Route path='/albums/search_album' render={this.renderAlbumSearchPage}/>
             <Route path='/about' render={this.renderAboutPage} />
           </Switch>
         </div>

@@ -12,7 +12,7 @@ const NavBar = (props) => {
                 <Link to="/users">Users</Link>{" "}
                 <Link to={`/profile/${props.userId}`}>Profile</Link>{" "}
                 <Link to="/albums/all"> All Albums</Link>{" "}
-                <Link to="/albums/add_album">Add Album</Link>{" "}
+                <Link to="/albums/search_album">Add Album</Link>{" "}
             </nav>
         </div>
     )

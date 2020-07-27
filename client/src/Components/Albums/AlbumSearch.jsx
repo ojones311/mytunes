@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import SearchResult from './SearchResult.jsx'
 import axios from 'axios'
 
-class AddAlbum extends Component {
+class AlbumSearch extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -11,8 +11,6 @@ class AddAlbum extends Component {
             searchBarValue: '',
             searchResults: [],
             submittedSearch: false,
-            credentialsNeeded: true,
-            searchType: 'artist',
             spotifyId:''
         }
     }
@@ -94,7 +92,7 @@ class AddAlbum extends Component {
 // have one function that takes in url and pars and returns response.data
     
     render(){
-        const {searchType ,searchBarValue, searchResults} = this.state
+        const {searchBarValue, searchResults} = this.state
         return(
                 <div>
                     <h2>Search by artist or album </h2>
@@ -120,4 +118,4 @@ class AddAlbum extends Component {
 
 
 
-export default AddAlbum
+export default AlbumSearch
