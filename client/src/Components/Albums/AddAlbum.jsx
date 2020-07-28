@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import {Redirect} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 
@@ -24,7 +25,7 @@ class AddAlbum extends Component {
                 artist: artist,
                 album_img_url: image
             })
-            console.log('Album added')
+            console.log('Album added', this.state)
         }catch(error){
             console.log('fetch err', error)
         }
@@ -35,6 +36,11 @@ class AddAlbum extends Component {
         })
     }
     render(){
+        if(this.state.redirect){
+            return(
+                <Redirect to={this.state.redirect}/>
+            )
+        }
         return(
             <div>
                 <Button variant='primary' size='lg' onClick={this.addAlbumToStorage}>Add</Button>{' '}

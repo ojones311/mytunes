@@ -1,6 +1,6 @@
 import React from 'react'
 import AddAlbum from  './AddAlbum.jsx'
-const SearchResult = ({id,artist,name,image, releaseDate, totalTracks}) => {
+const SearchResult = ({id,userId,artist,name,image, releaseDate, totalTracks}) => {
     return(
         <div>
             <img src={image} alt='album pic'/>
@@ -8,7 +8,7 @@ const SearchResult = ({id,artist,name,image, releaseDate, totalTracks}) => {
             <p>Release Date: {releaseDate}</p>
             <p>{totalTracks} Tracks</p>
             <div>
-                <AddAlbum id={id} artist={artist} name={name} image={image}/>
+                <AddAlbum id={id} userId={userId} artist={artist} name={name} image={image}/>
             </div>
         </div>
     )
