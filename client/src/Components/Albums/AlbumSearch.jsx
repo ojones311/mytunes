@@ -18,7 +18,6 @@ class AlbumSearch extends Component {
 //Fix display data 
     componentDidMount = async () => {
         await this.updateCredentials()
-        // this.state.isMounted = true
     }
 
     handleSearch = async(event) => {
@@ -105,7 +104,7 @@ class AlbumSearch extends Component {
                     <div>
                     {searchResults.map((elem) => {
                            return (
-                               <SearchResult key={elem.id} name={elem.name} image={elem.images[1].url} releaseDate={elem.release_date} totalTracks={elem.total_tracks}/>
+                               <SearchResult key={elem.id} id={elem.id} artist={elem.artists[0].name} name={elem.name} image={elem.images[1].url} releaseDate={elem.release_date} totalTracks={elem.total_tracks}/>
                            )
                         })}
                     </div>

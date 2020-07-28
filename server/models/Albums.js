@@ -59,6 +59,29 @@ addAlbumToProfile = async (album) => {
     }
 }
 
+createRelationInUserAlbums = async (album) => {
+    try{
+        insertQuery = `INSERT INTO users_albums(user_id, album_id, is_deleted) VALUES ($/user_id/,$/album_id/, $/is_deleted/)`
+
+        const userAlbumRelation = await db.one(insertQuery, {
+            user_id: album.user_id,
+            album_id: album.id,
+            is_deleted: false
+        })
+        return userAlbumRelation
+    }catch(error){
+        console.log('mod err'. error)
+    }
+}
+getAllRelations= async () => {
+    try{
+        const relations = await db.any(`SELECT * FROM users_albums`)
+
+        return relations
+    }catch(error){
+        console.log('mod err', error)
+    }
+}
 deleteAlbum = async (albumId, userId) => {
     try{
         const deletedAlbum = await db.one('UPDATE users_albums SET is_deleted = true WHERE (album_id = $1 AND user_id= $2)', [albumId, userId])
@@ -76,5 +99,7 @@ module.exports = {
     getLocalAlbumsByUserId,
     getLocalAlbumByAlbumId,
     addAlbumToProfile,
+    createRelationInUserAlbums,
+    getAllRelations,
     deleteAlbum
 }

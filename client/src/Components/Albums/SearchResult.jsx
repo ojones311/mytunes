@@ -1,12 +1,15 @@
 import React from 'react'
-
-const SearchResult = (props) => {
+import AddAlbum from  './AddAlbum.jsx'
+const SearchResult = ({id,artist,name,image, releaseDate, totalTracks}) => {
     return(
         <div>
-            <img src={props.image} alt='album pic'/>
-            <h4>{props.name}</h4>
-            <p>Release Date: {props.releaseDate}</p>
-            <p>{props.totalTracks} Tracks</p>
+            <img src={image} alt='album pic'/>
+            <h4>{name}</h4>
+            <p>Release Date: {releaseDate}</p>
+            <p>{totalTracks} Tracks</p>
+            <div>
+                <AddAlbum id={id} artist={artist} name={name} image={image}/>
+            </div>
         </div>
     )
 }

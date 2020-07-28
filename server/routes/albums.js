@@ -78,15 +78,18 @@ router.get('/albumId/:id', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-    const {id, title, artist, album_img_url} = req.body
+    const {id, user_id, title, artist, album_img_url} = req.body
 
     try{
         let album = {
-            id, title, artist, album_img_url
+            id, user_id, title, artist, album_img_url
         }
+
         let newAlbum = await Albums.addAlbumToProfile(album)
+        let albumRelation= await Albums.createRelationInUserAlbums(album)
+
         res.json({
-            payload: newAlbum,
+            payload: {newAlbum, albumRelation},
             msg: 'Posted a new album to the db',
             err: false
         })
@@ -99,6 +102,22 @@ router.post('/', async (req, res, next) => {
     }
 })
 
+router.get('/relations',  async (req, res, next) => {
+    try{
+        const albumRelation = await Albums.getAllRelations()
+        res.json({
+            payload: albumRelation,
+            msg: 'Getting all album relations',
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg:'Error getting all relations',
+            err: true
+        })
+    }
+})
 router.patch('/delete/:albumId/:userId', async (req, res, next) => {
     const {albumId, userId} = req.params
     try{
