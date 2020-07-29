@@ -1,6 +1,6 @@
 import React from 'react'
 import AddAlbum from  './AddAlbum.jsx'
-const SearchResult = ({id,userId,artist,name,image, releaseDate, totalTracks}) => {
+const SearchResult = ({id, userId,artist,name,image, releaseDate, totalTracks}) => {
     return(
         <div>
             <img src={image} alt='album pic'/>

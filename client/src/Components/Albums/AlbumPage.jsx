@@ -21,16 +21,18 @@ class AlbumPage extends Component {
         await this.fetchUserAlbum();
         await this.fetchCommentsByAlbumId();
     }
-
+    
     fetchUserAlbum = async () => {
         const {albumId} = this.state
         try{
             let response = await axios.get(`/albums/albumId/${albumId}`)
             const albumInfo = response.data.payload
             console.log(albumInfo)
+
             this.setState({
                 album: albumInfo
             })
+              
         }catch(error){
             console.log('err', error)
         }
@@ -53,6 +55,7 @@ class AlbumPage extends Component {
         // const {} = this.state
         try{
             let response = await axios.patch(`/comments/delete/${id}`)
+            await this.fetchCommentsByAlbumId()
         }catch(error){
             console.log('err',error)
         }

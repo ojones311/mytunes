@@ -67,7 +67,7 @@ class Profile extends Component {
             <div className='user-albums'>
                     {userAlbums.map((album) => {
                         return (
-                            <AlbumCard key={album.id} album={album} user={displayedUser.id} />
+                            <AlbumCard key={album.album_id} album={album} user={displayedUser.id} />
                         )
                     })}
                 </div>

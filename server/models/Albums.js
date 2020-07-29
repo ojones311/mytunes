@@ -24,7 +24,7 @@ getLocalAlbumsByArtist =  async (artist) => {
 
 getLocalAlbumsByUserId = async (userId) => {
     try{
-        let query = 'SELECT albums.id, albums.title, albums.artist, album_img_url, users_albums.user_id, users_albums.is_deleted FROM albums FULL OUTER JOIN users_albums ON albums.id=users_albums.album_id WHERE (user_id=$1 AND is_deleted=false)'
+        let query = `SELECT users_albums.user_id, users_albums.album_id, users_albums.is_deleted, albums.title, albums.artist, albums.album_img_url FROM users_albums INNER JOIN albums ON albums.id = users_albums.album_id WHERE (user_id = $1 AND is_deleted=false)`
 
         const albumsByUserId = await db.any(query, [userId])
         return albumsByUserId 
@@ -35,9 +35,11 @@ getLocalAlbumsByUserId = async (userId) => {
 
 getLocalAlbumByAlbumId = async (albumId) => {
     try{
-        let query = 'SELECT albums.id, albums.title, albums.artist, album_img_url, users_albums.user_id, users_albums.is_deleted FROM albums FULL OUTER JOIN users_albums ON albums.id=users_albums.album_id WHERE (album_id=$1 AND is_deleted=false)'
+        // let query = `SELECT users_albums.user_id, users_albums.album_id, users_albums.is_deleted, albums.title, albums.artist, albums.album_img_url FROM users_albums INNER JOIN albums ON albums.id = users_albums.album_id WHERE (album_id = $1 AND is_deleted=false)`
 
-        const albumById = await db.one(query, [albumId])
+        let newQuery = 'SELECT * FROM albums WHERE id= $1'
+
+        const albumById = await db.one(newQuery, [albumId])
         return albumById
     }catch(error){
         console.log('err', error)
