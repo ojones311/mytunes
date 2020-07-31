@@ -6,8 +6,11 @@ const AlbumCard = (props) => {
 
     const redirectToAlbumPage = () => {
         const {album} = props
-        
-        history.push(`/albums/id/${album.id}`)
+        if(album.album_id){
+            history.push(`/albums/id/${album.album_id}`)
+        }else{
+            history.push(`/albums/id/${album.id}`)
+        }      
     }
     if(props){
         return(

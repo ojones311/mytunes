@@ -136,20 +136,5 @@ router.patch('/delete/:albumId/:userId', async (req, res, next) => {
     }
 })
 
-//Search albums route make req to Spotify API
-router.get('/search', async (req, res, next) => {
-    try{
-        const authToken = await Auth.getSpotifyCredentials()
-        if(authToken){
-            let response = await axios.get()
-        }
-    }catch(error){
-        console.log('err', error)
-        res.json({
-            msg: 'Error trying to make request to Spotify',
-            err: true
-        })
-    }
-})
 
 module.exports = router 

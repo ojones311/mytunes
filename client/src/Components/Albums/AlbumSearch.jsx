@@ -1,4 +1,6 @@
 import React,{Component} from 'react'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 import SearchResult from './SearchResult.jsx'
 import axios from 'axios'
 
@@ -96,10 +98,12 @@ class AlbumSearch extends Component {
                 <div>
                     <h2>Search by artist or album </h2>
                     <div>
-                        <form onSubmit={this.handleSearch}>
-                            <input id='album-search' type='text' placeholder='Search by album name or artist' size={'50'} onChange={this.handleSearchValue} value={searchBarValue}></input>
-                            <button type='submit'>Search</button>
-                        </form>
+                        <Form onSubmit={this.handleSearch}>
+                            <Form.Group>
+                                <Form.Control size="lg" type="search" placeholder="Search by album name or artist" onChange={this.handleSearchValue} value={searchBarValue} />
+                                <Button type='submit'>Search</Button>
+                            </Form.Group>     
+                        </Form>
                     </div>
                     <div>
                     {searchResults.map((elem) => {
