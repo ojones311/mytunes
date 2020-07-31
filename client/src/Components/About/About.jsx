@@ -6,7 +6,7 @@ const About = () => {
         <div className='about-page'>
             <p>
                 Each user can search albums from the Spotify API and add them to their personal album list. Then
-                other users can talk about the albums  and have maeningful discussions about what they liked and disliked 
+                other users can talk about the albums and have meaningful discussions about what they liked and disliked 
                 the albums the user listened to.
             </p>
             <h4>Made using React, Nodejs, and the Spotify API</h4>
