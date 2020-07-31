@@ -26,6 +26,9 @@ class AddAlbum extends Component {
                 album_img_url: image
             })
             console.log('Album added', this.state)
+            setTimeout(() => {
+                this.redirectToProfilePage()
+            }, 2000)  
         }catch(error){
             console.log('fetch err', error)
         }

@@ -21,7 +21,7 @@ getUserById = async (id) => {
 
 getUsersByAlbum = async (album_id) => {
     try{
-        const usersAttachedToAlbum = await db.any('SELECT * FROM users_albums WHERE (album_id = $1 AND is_deleted= false)', [album_id])
+        const usersAttachedToAlbum = await db.any('SELECT * FROM users_albums INNER JOIN users ON users_albums.user_id = users.id WHERE (users_albums.album_id = $1 AND users_albums.is_deleted= false)', [album_id])
         return usersAttachedToAlbum 
     }catch(error){
         console.log('err', error)

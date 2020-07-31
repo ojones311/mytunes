@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Comment from '../Comment/Comment.jsx'
 import axios from 'axios'
-
+import '../Styles/Albums/AlbumPage.css'
 
 class AlbumPage extends Component {
     constructor(props){
@@ -10,6 +10,7 @@ class AlbumPage extends Component {
             userId: props.userId,
             albumId: props.match.params.id,
             album:'',
+            consumers: [],
             comments: [],
             numberOfComments:'',
             commentInputVal: '',
@@ -20,6 +21,7 @@ class AlbumPage extends Component {
     componentDidMount = async () => {
         await this.fetchUserAlbum();
         await this.fetchCommentsByAlbumId();
+        await this.fetchUsersListeningToAlbum();
     }
     
     fetchUserAlbum = async () => {
@@ -35,6 +37,20 @@ class AlbumPage extends Component {
               
         }catch(error){
             console.log('err', error)
+        }
+    }
+
+    fetchUsersListeningToAlbum = async () => {
+        const {albumId} = this.state
+        try{
+            let response = await axios.get(`/users/album/${albumId}`)
+            const users = response.data.payload
+            console.log(users)
+            this.setState({
+                consumers: users
+            })
+        }catch(error){
+            console.log('err',error)
         }
     }
     fetchCommentsByAlbumId = async () => {
@@ -54,7 +70,7 @@ class AlbumPage extends Component {
     deleteComment = async (id) => {
         // const {} = this.state
         try{
-            let response = await axios.patch(`/comments/delete/${id}`)
+            await axios.patch(`/comments/delete/${id}`)
             await this.fetchCommentsByAlbumId()
         }catch(error){
             console.log('err',error)
@@ -108,13 +124,23 @@ class AlbumPage extends Component {
         })
     }
     render(){
-        const {album, comments, numberOfComments, commentInputVal} = this.state
+        const {album, comments, consumers, numberOfComments, commentInputVal} = this.state
         return(
             <div>
                 <div className='album-img'>
                     <h2>{album.title} by </h2>
                     <h4>{album.artist}</h4>
-                    <img src={album.album_img_url} width={'300px'} height={'300px'}/>
+                    <img src={album.album_img_url} alt={'album IMG'}width={'300px'} height={'300px'}/>
+                </div>
+                <div className='listeners'>
+                <h3>Listeners:</h3>
+                    {consumers.map((user) => {
+                        return(
+                            <div id='username' key={user.id}> 
+                                <h4>{user.username}</h4>
+                            </div>
+                        )
+                    })} 
                 </div>
                 <div className='add_comment-form'>
                 <form onSubmit={this.handleFormSubmission}>
