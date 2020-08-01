@@ -1,0 +1,19 @@
+.user-selection {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    padding: 10px;
+    justify-content: center;
+}
+
+#user {
+    margin: 50px;
+}
+
+#pic-select {
+    transition: 0.25s
+}
+
+#pic-select:hover {
+    transform: scaleY(1.15) scaleX(1.15)
+}

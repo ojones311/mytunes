@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import NewUserForm from './NewUserForm.jsx'
 import '../Styles/LandingPage/LandingPage.css'
 import axios from 'axios'
 
@@ -38,12 +39,13 @@ class LandingPage extends Component {
                 <div className='user-selection'>
                     {userSelection.map((user) => {
                         return(
-                            <div>
-                                <img src={user.avatar_url} alt={'set-userimg'} height={'100px'} width={'auto'} /> 
+                            <div id={'user'} key={user.id}>
+                                <img id='pic-select'src={user.avatar_url} alt={'set-userimg'} height={'200px'} width={'auto'} /> 
                             </div>
                         )
                     })}
                 </div>
+                <NewUserForm />
             </div>
             
             </>
