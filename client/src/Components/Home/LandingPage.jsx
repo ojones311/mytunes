@@ -29,7 +29,9 @@ class LandingPage extends Component {
             console.log('err', error)
         }
     }
-
+    selectUser= async () => {
+        
+    }
     render(){
         const {userSelection} = this.state
         return(
@@ -40,6 +42,7 @@ class LandingPage extends Component {
                     {userSelection.map((user) => {
                         return(
                             <div id={'user'} key={user.id}>
+                                <h3>{user.username}</h3>
                                 <img id='pic-select'src={user.avatar_url} alt={'set-userimg'} height={'200px'} width={'auto'} /> 
                             </div>
                         )

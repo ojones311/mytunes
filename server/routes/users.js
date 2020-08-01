@@ -73,7 +73,7 @@ router.post('/', async (req, res, next) => {
             err: false
         })
     }catch(error){
-        console.log('err', error)
+        console.log('rt err', error)
         res.json({
             msg:'Error adding new user',
             err: true
