@@ -19,7 +19,7 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      userId: 4,
+      userId: 2,
       isUserLoggedIn: false,
       wasInitialized: false,
       config: config,
@@ -45,7 +45,7 @@ class App extends Component {
 }
 
    renderHomePage = (routeProps) => {
-    return <LandingPage {...routeProps} />
+    return <LandingPage {...routeProps} userId={this.state.userId}/>
   }
 
   renderProfilePage = (routeProps) => {

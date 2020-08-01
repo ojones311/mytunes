@@ -1,18 +1,52 @@
 import React, {Component} from 'react'
+import '../Styles/LandingPage/LandingPage.css'
+import axios from 'axios'
 
 
 class LandingPage extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
-            userId: null
+            userId: props.userId,
+            userSelection: []
         }
     }
+
+    componentDidMount = async () => {
+        await this.fetchUserList();
+    }
+
+    fetchUserList = async () => {
+        try{
+            let response = await axios.get(`/users/all`)
+            const users = response.data.payload
+            this.setState({
+                userSelection: users
+            })
+            console.log(users)
+        }catch(error){
+            console.log('err', error)
+        }
+    }
+
     render(){
+        const {userSelection} = this.state
         return(
+            <>
             <div>
-                <h2>Landing Page</h2>
+                <h2>Create a new user or select existing user for demo</h2>
+                <div className='user-selection'>
+                    {userSelection.map((user) => {
+                        return(
+                            <div>
+                                <img src={user.avatar_url} alt={'set-userimg'} height={'100px'} width={'auto'} /> 
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
+            
+            </>
         )
     }
 }
