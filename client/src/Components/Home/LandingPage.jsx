@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import NewUserForm from './NewUserForm.jsx'
+import UserSelectorCard from '../Users/UserSelectorCard.jsx'
 import '../Styles/LandingPage/LandingPage.css'
 import axios from 'axios'
 
@@ -29,9 +30,7 @@ class LandingPage extends Component {
             console.log('err', error)
         }
     }
-    selectUser= async () => {
-        
-    }
+    
     render(){
         const {userSelection} = this.state
         return(
@@ -41,10 +40,7 @@ class LandingPage extends Component {
                 <div className='user-selection'>
                     {userSelection.map((user) => {
                         return(
-                            <div id={'user'} key={user.id}>
-                                <h3>{user.username}</h3>
-                                <img id='pic-select'src={user.avatar_url} alt={'set-userimg'} height={'200px'} width={'auto'} /> 
-                            </div>
+                           <UserSelectorCard key={user.id} user={user} setUser={this.selectUser}/>
                         )
                     })}
                 </div>
