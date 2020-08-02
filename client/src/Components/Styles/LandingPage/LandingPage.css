@@ -12,9 +12,11 @@
 }
 
 #pic-select {
-    transition: 0.25s
+    transition: 0.25s;
+    border-bottom: 5px solid transparent;
 }
 
 #pic-select:hover {
-    transform: scaleY(1.15) scaleX(1.15)
+    transform: scaleY(1.15) scaleX(1.15);
+    border-bottom: 5px solid red;
 }

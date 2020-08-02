@@ -10,6 +10,7 @@ class LandingPage extends Component {
         super(props)
         this.state = {
             userId: props.userId,
+            userSelected: '',
             userSelection: []
         }
     }
@@ -30,7 +31,12 @@ class LandingPage extends Component {
             console.log('err', error)
         }
     }
-    
+    setUser = () => {
+        console.log('User clicked')
+        // this.setState({
+        //     userSelected: ''
+        // })
+    }
     render(){
         const {userSelection} = this.state
         return(

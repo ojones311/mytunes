@@ -28,15 +28,15 @@ class NewUserForm extends Component {
 
     handleNewUserSubmission = async (event) => {
         event.preventDefault()
-        if(this.isFormCompleted()){
-            this.setState({
-                submittedSearch: true,
-            })
+        // if(this.isFormCompleted()){
+        //     this.setState({
+        //         submittedSearch: true,
+        //     })
             await this.postNewUser()
             this.clearSearchBar()
-        }else {
-            console.log('Complete search to continue')
-        } 
+        // }else {
+        //     console.log('Complete search to continue')
+        // } 
     }
     
 //hardcode avatar url until I add multer to backend
@@ -46,11 +46,11 @@ class NewUserForm extends Component {
         })
         console.log(this.state.username)
     }
-    isFormCompleted = () => {
-        return(
-            this.state.username.trim()
-        )
-    }
+    // isFormCompleted = () => {
+    //     return(
+    //         this.state.username.trim()
+    //     )
+    // }
     clearSearchBar = () => {
         console.log('Search bar cleared')
         this.setState({

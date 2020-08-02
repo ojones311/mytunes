@@ -1,13 +1,11 @@
 import React from 'react'
 
 
-const UserSelectorCard = ({user, selectUser}) => {
-
-
+const UserSelectorCard = ({user, setUser}) => {
     return(
         <div id={'user'} key={user.id}>
             <h3>{user.username}</h3>
-            <img id='pic-select' src={user.avatar_url} onClick={selectUser} alt={'set-userimg'} height={'200px'} width={'auto'} /> 
+            <img id='pic-select' src={user.avatar_url} alt={'set-userimg'} onClick={()=> console.log('hi')} height={'200px'} width={'150px'} /> 
         </div>
     )
 }

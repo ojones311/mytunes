@@ -30,12 +30,8 @@ getUsersByAlbum = async (album_id) => {
 
 createNewUser = async (user) => {
     try{
-       let createdUser = await db.any('SELECT * FROM users WHERE (username = $/username/ AND is_deleted= false', user)
-        if(createdUser){
-            console.log(createdUser)
-        }
         const insertQuery = 'INSERT INTO users(username, avatar_url, is_deleted) VALUES ($/username/, $/avatar_url/, $/is_deleted/) RETURNING *'
-        let newUser = await db.one(insertQuery, {
+        const newUser = await db.one(insertQuery, {
             username: user.username,
             avatar_url: user.avatar_url,
             is_deleted: false
