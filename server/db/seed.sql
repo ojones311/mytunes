@@ -21,7 +21,8 @@ CREATE TABLE users_albums (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(id),
     album_id VARCHAR REFERENCES albums(id),
-    is_deleted BOOLEAN 
+    is_deleted BOOLEAN,
+    UNIQUE (user_id, album_id)
 );
 
 CREATE TABLE comments (

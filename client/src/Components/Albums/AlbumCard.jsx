@@ -1,29 +1,28 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
 
-const AlbumCard = (props) => {
+const AlbumCard = ({album}) => {
     let history = useHistory()
 
     const redirectToAlbumPage = () => {
-        const {album} = props
         if(album.album_id){
             history.push(`/albums/id/${album.album_id}`)
         }else{
             history.push(`/albums/id/${album.id}`)
         }      
     }
-    if(props){
+    if(album){
         return(
             <div className='album-card'>
                 <img 
-                    src={props.album.album_img_url} 
+                    src={album.album_img_url} 
                     onClick={redirectToAlbumPage}
-                    alt={props.album.title} 
+                    alt={album.title} 
                     width={'200px'} 
                     height={'200px'}
                 />
-                <h4>{props.album.title}</h4>
-                <h5>{props.album.artist}</h5>
+                <h4>{album.title}</h4>
+                <h5>{album.artist}</h5>
                 
             </div>
         )

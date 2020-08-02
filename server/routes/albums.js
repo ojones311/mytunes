@@ -88,11 +88,12 @@ router.post('/', async (req, res, next) => {
         let newAlbum = await Albums.addAlbumToProfile(album)
         let albumRelation= await Albums.createRelationInUserAlbums(album)
 
-        res.json({
+        res.status(201).json({
             payload: {newAlbum, albumRelation},
             msg: 'Posted a new album to the db',
             err: false
         })
+        
     }catch(error){
         console.log('err', error)
         res.json({

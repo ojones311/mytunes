@@ -10,7 +10,6 @@ class LandingPage extends Component {
         super(props)
         this.state = {
             userId: props.userId,
-            userSelected: '',
             userSelection: []
         }
     }
@@ -31,12 +30,7 @@ class LandingPage extends Component {
             console.log('err', error)
         }
     }
-    setUser = () => {
-        console.log('User clicked')
-        // this.setState({
-        //     userSelected: ''
-        // })
-    }
+    
     render(){
         const {userSelection} = this.state
         return(
@@ -46,7 +40,7 @@ class LandingPage extends Component {
                 <div className='user-selection'>
                     {userSelection.map((user) => {
                         return(
-                           <UserSelectorCard key={user.id} user={user} setUser={this.selectUser}/>
+                           <UserSelectorCard key={user.id} user={user} setUser={this.props.setUser}/>
                         )
                     })}
                 </div>

@@ -19,7 +19,7 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      userId: 2,
+      userId: null,
       isUserLoggedIn: false,
       wasInitialized: false,
       config: config,
@@ -27,6 +27,13 @@ class App extends Component {
     }
   }
 
+  setUser = (id) => {
+    console.log('User clicked')
+    this.setState({
+        userId: id
+    })
+    
+}
 
   getSpotifyCredentials = async () => {
     try{
@@ -45,7 +52,7 @@ class App extends Component {
 }
 
    renderHomePage = (routeProps) => {
-    return <LandingPage {...routeProps} userId={this.state.userId}/>
+    return <LandingPage {...routeProps} userId={this.state.userId} setUser={this.setUser}/>
   }
 
   renderProfilePage = (routeProps) => {
