@@ -1,5 +1,6 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
+import '../Styles/Albums/AlbumCard.css'
 
 const AlbumCard = ({album}) => {
     let history = useHistory()
@@ -14,16 +15,19 @@ const AlbumCard = ({album}) => {
     if(album){
         return(
             <div className='album-card'>
-                <img 
-                    src={album.album_img_url} 
-                    onClick={redirectToAlbumPage}
-                    alt={album.title} 
-                    width={'200px'} 
-                    height={'200px'}
-                />
-                <h4>{album.title}</h4>
-                <h5>{album.artist}</h5>
-                
+                <div className='album-img'>
+                    <img 
+                        src={album.album_img_url} 
+                        onClick={redirectToAlbumPage}
+                        alt={album.title} 
+                        width={'200px'} 
+                        height={'200px'}
+                    />
+                </div>
+                <div className='album-info'>
+                    <h4 id='album-title'>{album.title}</h4>
+                    <h5 id='album-artist'>{album.artist}</h5>
+                </div>
             </div>
         )
     } 

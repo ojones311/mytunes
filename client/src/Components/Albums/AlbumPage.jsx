@@ -128,7 +128,7 @@ class AlbumPage extends Component {
         return(
             <div>
                 <div className='album-img'>
-                    <h2>{album.title} by </h2>
+                    <h2>{album.title}</h2>
                     <h4>{album.artist}</h4>
                     <img src={album.album_img_url} alt={'album IMG'}width={'300px'} height={'300px'}/>
                 </div>

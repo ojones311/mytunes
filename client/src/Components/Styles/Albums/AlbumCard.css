@@ -1,0 +1,17 @@
+.album-info {
+    justify-content: center;
+}
+
+.album-img {
+    margin: 0 auto;
+}
+
+#album-title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+}
+
+#album-artist {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
+}
