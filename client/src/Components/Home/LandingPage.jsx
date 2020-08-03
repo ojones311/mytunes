@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import NewUserForm from './NewUserForm.jsx'
-import UserSelectorCard from '../Users/UserSelectorCard.jsx'
+import UserSelectorCard from './UserSelectorCard.jsx'
 import '../Styles/LandingPage/LandingPage.css'
 import axios from 'axios'
 
@@ -36,7 +36,7 @@ class LandingPage extends Component {
         return(
             <>
             <div>
-                <h2>Create a new user or select existing user for demo</h2>
+                <h2 id='landing-title'>Create a new user or select existing user for demo</h2>
                 <div className='user-selection'>
                     {userSelection.map((user) => {
                         return(

@@ -1,0 +1,23 @@
+.profile-card {
+    margin: 0 auto;
+    justify-content: center;
+}
+.user-profile{
+    display: grid;
+    padding: 20px;
+}
+
+.user-albums {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.album-card {
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.album-card:hover{
+    background-color: rgb(214, 67, 219);
+}

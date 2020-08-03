@@ -1,11 +1,37 @@
-.App {
-  text-align: center;
+html,body {
+  min-height: 100%
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App {
+  background-color: #eee;
 }
+
+
+.header {
+  text-align: center;
+  color: white;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: black;
+  border: 1px solid black;
+    box-shadow:  -1px 1px black,
+         -2px 2px black,
+         -3px 3px black,
+         -4px 4px black,
+         -5px 5px black;
+}
+
+#main-title {
+  font-size: 65px;
+  letter-spacing: 2.5px;
+}
+
+.nav-bar{
+  text-align: right;
+  width: 30%;
+}
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -13,7 +39,7 @@
   }
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -22,7 +48,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #61dafb;

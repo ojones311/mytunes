@@ -1,10 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
+import '../../App.css'
 
 const NavBar = (props) => {
     return (
-        <div>
+        <div className='nav-bar'>
             <Navbar variant="dark">
                 <Link to= "/">Home</Link>{" "}
                 <Link to="/about">About</Link>{" "}

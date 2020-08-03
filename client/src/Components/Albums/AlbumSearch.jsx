@@ -2,7 +2,10 @@ import React,{Component} from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import SearchResult from './SearchResult.jsx'
+import '../Styles/Albums/AlbumSearch.css'
 import axios from 'axios'
+
+
 
 class AlbumSearch extends Component {
     constructor(props){

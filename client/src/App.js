@@ -19,7 +19,7 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      userId: null,
+      userId: '',
       isUserLoggedIn: false,
       wasInitialized: false,
       config: config,
@@ -78,10 +78,12 @@ class App extends Component {
   }
   render(){
     return (
-      <div>
-        <h2>Welcome to Mytunes</h2>
+      <div className='App'>
+        <div className='header'>
         <NavBar userId={this.state.userId}/>
-        <div> 
+          <h2 id='main-title'>MyTunes</h2>
+        </div>
+        <div className='App-body'> 
           <Switch>
             <Route exact path= "/" render={this.renderHomePage}/>
             <Route path="/profile/:id" render={this.renderProfilePage}/>

@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import AlbumCard from '../Albums/AlbumCard.jsx'
+import '../Styles/Albums/AlbumList.css'
 import axios from 'axios'
 
 
@@ -31,10 +32,9 @@ class AlbumList extends Component {
     render(){
         const {albumList} = this.state
         return(
-            <>
+            <div className='albums-content'>
                 <div className='album_list-header'>
                     <h2>Album List</h2>
-                    <p>Here we list every album in our db</p>
                 </div>
                 <div className='album_list'>
                     {albumList.map((album) => {
@@ -43,7 +43,7 @@ class AlbumList extends Component {
                         )
                     })}
                 </div>
-            </>
+            </div>
         )
     }
 }

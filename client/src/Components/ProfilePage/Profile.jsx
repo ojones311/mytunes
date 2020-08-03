@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import ProfileCard from '../ProfilePage/ProfileCard.jsx'
 import AlbumCard from '../Albums/AlbumCard.jsx'
+import '../Styles/ProfilePage/Profile.css'
 import axios from 'axios'
 
 
@@ -75,7 +76,6 @@ class Profile extends Component {
 
         return(
             <div className='profile-page'>
-                <h2>Profile Page </h2>
                 <div className='user-profile'>
                     <ProfileCard user={displayedUser}/>
                 </div>
