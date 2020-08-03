@@ -1,0 +1,10 @@
+.user-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    padding: 20px;
+}
+
+.user-card {
+    margin: 0 auto;
+}

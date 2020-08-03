@@ -9,9 +9,17 @@
 #album-title{
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
+    font-size: 16px;
 }
 
 #album-artist {
     font-family: 'Montserrat', sans-serif;
     font-weight: lighter;
+    font-size: 13.25px;
+}
+
+#album-info {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
+    font-size: 12px;
 }

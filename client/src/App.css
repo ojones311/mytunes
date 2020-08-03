@@ -8,6 +8,20 @@ html,body {
   background-color: #eee;
 }
 
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+}
+
+h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
+}
 
 .header {
   text-align: center;
@@ -28,7 +42,9 @@ html,body {
   width: 30%;
 }
 
-
+.about-page {
+  width: 70% ;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

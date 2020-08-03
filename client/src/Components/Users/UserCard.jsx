@@ -1,5 +1,6 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
+import '../Styles/UserStyling/User.css'
 
 const UserCard = (props) => {
 

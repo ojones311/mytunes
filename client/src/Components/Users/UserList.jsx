@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import UserCard from '../Users/UserCard.jsx'
+import '../Styles/UserStyling/User.css'
 import axios from 'axios'
 
 class UserList extends Component {
