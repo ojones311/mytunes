@@ -1,8 +1,15 @@
+.album-page {
+    margin: 0 auto;
+    width: 600px;
+    text-align: center;
+}
+
 .listeners {
     display: flex;
     flex-direction: row;
     padding:5px;
-    
+    /* text-align: center; */
+    margin: 0 auto;
 }
 
 #username {

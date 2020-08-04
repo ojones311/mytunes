@@ -6,7 +6,7 @@ import '../../App.css'
 const NavBar = (props) => {
     return (
         <div className='nav-bar'>
-            <Navbar variant="dark">
+            <Navbar className="bg-light justify-content-between">
                 <Link to= "/">Home</Link>{" "}
                 <Link to="/about">About</Link>{" "}
                 <Link to="/users">Users</Link>{" "}

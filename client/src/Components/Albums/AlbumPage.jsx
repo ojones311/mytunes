@@ -126,7 +126,7 @@ class AlbumPage extends Component {
     render(){
         const {album, comments, consumers, numberOfComments, commentInputVal} = this.state
         return(
-            <div>
+            <div className='album-page'>
                 <div className='album-img'>
                     <h2>{album.title}</h2>
                     <h4>{album.artist}</h4>

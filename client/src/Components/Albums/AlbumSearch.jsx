@@ -108,7 +108,7 @@ class AlbumSearch extends Component {
                             </Form.Group>     
                         </Form>
                     </div>
-                    <div>
+                    <div className='search-results'>
                     {searchResults.map((elem) => {
                            return (
                                <SearchResult key={elem.id} id={elem.id} userId={this.state.userId} artist={elem.artists[0].name} name={elem.name} image={elem.images[1].url} releaseDate={elem.release_date} totalTracks={elem.total_tracks}/>

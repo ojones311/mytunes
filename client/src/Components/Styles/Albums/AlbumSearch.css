@@ -2,3 +2,6 @@ html {
     min-height: 100%;
 }
 
+.search-results { 
+    padding: 10px;
+}

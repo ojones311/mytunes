@@ -1,5 +1,9 @@
 .album-card {
     width: 200px;
+    padding: 10px;
+}
+.album-search-result {
+    padding: 10px;
 }
 
 .album-info {
@@ -27,3 +31,4 @@
     font-weight: lighter;
     font-size: 12px;
 }
+
