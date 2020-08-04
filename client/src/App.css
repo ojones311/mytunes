@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Montserrat:wght@200;400;700&display=swap');
 
-html,body {
-  min-height: 100%
-}
 
 .App {
   background-color: #eee;
