@@ -10,12 +10,14 @@ class LandingPage extends Component {
         super(props)
         this.state = {
             userId: props.userId,
-            userSelection: []
+            userSelection: [],
+            selectedUser: props.userId
         }
     }
 
     componentDidMount = async () => {
         await this.fetchUserList();
+        await this.checkUserSignedIn();
     }
 
     fetchUserList = async () => {
@@ -30,7 +32,11 @@ class LandingPage extends Component {
             console.log('err', error)
         }
     }
-    
+    checkUserSignedIn = async () => {
+        const signedInUser = this.state.userSelection.filter(user => user.id == this.state.userId)
+        console.log(signedInUser)
+        return signedInUser
+    }
     render(){
         const {userSelection} = this.state
         return(
