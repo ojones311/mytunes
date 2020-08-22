@@ -70,8 +70,7 @@ class AlbumSearch extends Component {
 
     searchSpotify = async (type) => {
         const {credentials, searchBarValue} = this.state
-        console.log('type',credentials.token_type)
-        console.log('access', credentials.access_token)
+        
         try{
             let response = await axios.get(`https://api.spotify.com/v1/search`, {
                 params: {

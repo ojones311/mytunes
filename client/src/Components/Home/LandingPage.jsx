@@ -37,6 +37,7 @@ class LandingPage extends Component {
         console.log(signedInUser)
         return signedInUser
     }
+
     render(){
         const {userSelection} = this.state
         return(
