@@ -33,7 +33,7 @@ class LandingPage extends Component {
         }
     }
     checkUserSignedIn = async () => {
-        const signedInUser = this.state.userSelection.filter(user => user.id == this.state.userId)
+        const signedInUser = this.state.userSelection.filter(user => user.id === this.state.userId)
         console.log(signedInUser)
         return signedInUser
     }
