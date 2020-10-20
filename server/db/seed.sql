@@ -1,7 +1,7 @@
-DROP DATABASE if exists mytunes;
-CREATE DATABASE mytunes;
+-- DROP DATABASE if exists mytunes;
+-- CREATE DATABASE mytunes;
 
-\c mytunes
+-- \c mytunes
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
