@@ -8,7 +8,9 @@ import AlbumList from './Components/Albums/AlbumList.jsx'
 import AlbumPage from './Components/Albums/AlbumPage.jsx'
 import AlbumSearch from './Components/Albums/AlbumSearch.jsx'
 import AboutPage from './Components/About/About.jsx'
-import {config, data} from './secrets.js'
+import config from './secrets.js'
+import data from './secrets.js'
+
 import './App.css';
 import axios from 'axios'
 
