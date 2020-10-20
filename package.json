@@ -1,0 +1,30 @@
+{
+  "name": "mytunes",
+  "version": "1.0.0",
+  "description": "Mytunes is a full-stack application where users can post, comment on, and favorite songs that they are listening to.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "start:dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ojones311/mytunes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ojones311/mytunes/issues"
+  },
+  "homepage": "https://github.com/ojones311/mytunes#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "pg-promise": "^10.5.7"
+  }
+}
