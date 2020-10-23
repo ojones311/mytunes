@@ -8,7 +8,7 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 
-const homeRouter = require('./routes/home');
+const homeRouter = require('../routes/home');
 const usersRouter = require('./routes/users');
 const albumsRouter = require('./routes/albums');
 const genresRouter = require('./routes/genres');

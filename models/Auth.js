@@ -1,4 +1,4 @@
-const db = require('../db/index')
+const db = require('../../db/index')
 const axios = require('axios')
 const qs = require('querystring')
 const secrets = require('../../client/src/secrets.js')

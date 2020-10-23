@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Genres = require('../models/Genres')
+const Genres = require('../server/models/Genres')
 
 router.get('/', (req, res, next) =>{
     res.send('users rt: Refer to the README on how to navigate routes')
