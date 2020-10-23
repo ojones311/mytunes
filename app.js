@@ -8,7 +8,7 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 
-// const homeRouter = require('../routes/home');
+const homeRouter = require('./routes/home');
 const usersRouter = require('./routes/users');
 const albumsRouter = require('./routes/albums');
 const genresRouter = require('./routes/genres');
@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use('/', homeRouter);
+app.use('/', homeRouter);
 app.use('/users', usersRouter);
 app.use('/albums', albumsRouter);
 app.use('/genres', genresRouter);

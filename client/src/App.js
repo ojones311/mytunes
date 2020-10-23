@@ -39,7 +39,7 @@ class App extends Component {
 
   getSpotifyCredentials = async () => {
     try{
-        let response = await axios.post('https://accounts.spotify.com/api/token', qs.stringify(this.state.data), this.state.config)
+        let response = await axios.post('https://accounts.spotify.com/api/token', qs.stringify(this.state.data.data), this.state.data.config)
         console.log('response =>', response.data)
 
         if(response.status === 200){
@@ -51,6 +51,7 @@ class App extends Component {
     }catch(error){
         console.log('err', error)
     }
+    console.log(this.state.data)
 }
 
    renderHomePage = (routeProps) => {
