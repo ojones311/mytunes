@@ -8,9 +8,7 @@ import AlbumList from './Components/Albums/AlbumList.jsx'
 import AlbumPage from './Components/Albums/AlbumPage.jsx'
 import AlbumSearch from './Components/Albums/AlbumSearch.jsx'
 import AboutPage from './Components/About/About.jsx'
-import config from './secrets.js'
-import data from './secrets.js'
-
+import secrets from './secrets.js'
 import './App.css';
 import axios from 'axios'
 
@@ -24,8 +22,8 @@ class App extends Component {
       userId: '',
       isUserLoggedIn: false,
       wasInitialized: false,
-      config: config,
-      data: data
+      config: secrets.config,
+      data: secrets.data
     }
   }
 
@@ -39,7 +37,7 @@ class App extends Component {
 
   getSpotifyCredentials = async () => {
     try{
-        let response = await axios.post('https://accounts.spotify.com/api/token', qs.stringify(this.state.data.data), this.state.data.config)
+        let response = await axios.post('https://accounts.spotify.com/api/token', qs.stringify(this.state.data), this.state.config)
         console.log('response =>', response.data)
 
         if(response.status === 200){
