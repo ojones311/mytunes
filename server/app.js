@@ -8,11 +8,11 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 
-const homeRouter = require('./server/routes/home');
-const usersRouter = require('./server/routes/users');
-const albumsRouter = require('./server/routes/albums');
-const genresRouter = require('./server/routes/genres');
-const commentsRouter = require('./server/routes/comments');
+const homeRouter = require('./routes/home');
+const usersRouter = require('./routes/users');
+const albumsRouter = require('./routes/albums');
+const genresRouter = require('./routes/genres');
+const commentsRouter = require('./routes/comments');
 
 app.use(cors());
 
