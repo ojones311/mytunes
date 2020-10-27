@@ -3,7 +3,7 @@ import NewUserForm from './NewUserForm.jsx'
 import UserSelectorCard from './UserSelectorCard.jsx'
 import '../Styles/LandingPage/LandingPage.css'
 import axios from 'axios'
-
+import url from '../../apiURL'
 
 class LandingPage extends Component {
     constructor(props){
@@ -22,7 +22,7 @@ class LandingPage extends Component {
 
     fetchUserList = async () => {
         try{
-            let response = await axios.get(`/users/all`)
+            let response = await axios.get(`${url}/users/all`)
             const users = response.data.payload
             this.setState({
                 userSelection: users
