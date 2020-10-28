@@ -22,7 +22,7 @@ class LandingPage extends Component {
 
     fetchUserList = async () => {
         try{
-            let response = await axios.get(`https://mytunes-backend.herokuapp.com/users/all`)
+            let response = await axios.get(`${url}/users/all`)
             const users = response.data.payload
             this.setState({
                 userSelection: users
@@ -31,6 +31,7 @@ class LandingPage extends Component {
         }catch(error){
             console.log('err', error)
         }
+        console.log(url)
     }
     checkUserSignedIn = async () => {
         const signedInUser = this.state.userSelection.filter(user => user.id === this.state.userId)

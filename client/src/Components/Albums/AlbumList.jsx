@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import AlbumCard from '../Albums/AlbumCard.jsx'
+import url from '../../apiURL'
 import '../Styles/Albums/AlbumList.css'
 import axios from 'axios'
 
@@ -19,7 +20,7 @@ class AlbumList extends Component {
 
     fetchAlbumList = async () => {
         try{
-            let response = await axios.get('/albums/all')
+            let response = await axios.get(`${url}/albums/all`)
             const albums =  response.data.payload
             this.setState({
                 albumList: albums

@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import url from '../../apiURL'
 import '../Styles/LandingPage/NewUserForm.css'
 import axios from 'axios'
 
@@ -17,7 +18,7 @@ class NewUserForm extends Component {
     postNewUser = async () => {
         const {username, avatar_url} = this.state
         try{
-            await axios.post('/users', {
+            await axios.post(`${url}/users`, {
                 username,
                 avatar_url
             })

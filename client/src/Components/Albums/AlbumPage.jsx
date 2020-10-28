@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Comment from '../Comment/Comment.jsx'
+import url from '../../apiURL'
 import axios from 'axios'
 import '../Styles/Albums/AlbumPage.css'
 
@@ -27,7 +28,7 @@ class AlbumPage extends Component {
     fetchUserAlbum = async () => {
         const {albumId} = this.state
         try{
-            let response = await axios.get(`/albums/albumId/${albumId}`)
+            let response = await axios.get(`${url}/albums/albumId/${albumId}`)
             const albumInfo = response.data.payload
             console.log(albumInfo)
 
@@ -43,7 +44,7 @@ class AlbumPage extends Component {
     fetchUsersListeningToAlbum = async () => {
         const {albumId} = this.state
         try{
-            let response = await axios.get(`/users/album/${albumId}`)
+            let response = await axios.get(`${url}/users/album/${albumId}`)
             const users = response.data.payload
             console.log(users)
             this.setState({
@@ -56,7 +57,7 @@ class AlbumPage extends Component {
     fetchCommentsByAlbumId = async () => {
         const {albumId} = this.state
         try{
-            let response = await axios.get(`/comments/album/${albumId}`)
+            let response = await axios.get(`${url}/comments/album/${albumId}`)
             const comments = response.data.payload
             console.log(comments)
             this.setState({
@@ -68,9 +69,8 @@ class AlbumPage extends Component {
         }
     }
     deleteComment = async (id) => {
-        // const {} = this.state
         try{
-            await axios.patch(`/comments/delete/${id}`)
+            await axios.patch(`${url}/comments/delete/${id}`)
             await this.fetchCommentsByAlbumId()
         }catch(error){
             console.log('err',error)
@@ -101,7 +101,7 @@ class AlbumPage extends Component {
         const {commentInputVal, userId, albumId} = this.state
     
         try{
-            await axios.post('/comments', {
+            await axios.post(`${url}/comments`, {
             comment_body: commentInputVal,
             commenter_id: userId, 
             album_id: albumId
@@ -117,7 +117,7 @@ class AlbumPage extends Component {
             commentInputVal
         )
     }
-    clearAllForms= () => {
+    clearAllForms = () => {
         console.log('Form cleared')
         this.setState({
             commentInputVal: ''

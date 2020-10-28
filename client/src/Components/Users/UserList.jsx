@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import UserCard from '../Users/UserCard.jsx'
+import url from '../../apiURL'
 import '../Styles/UserStyling/User.css'
 import axios from 'axios'
 
@@ -17,7 +18,7 @@ class UserList extends Component {
 
     fetchUserList = async () => {
         try{
-            let response = await axios.get(`/users/all`)
+            let response = await axios.get(`${url}/users/all`)
             const users = response.data.payload
             this.setState({
                 userList: users

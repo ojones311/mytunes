@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import ProfileCard from '../ProfilePage/ProfileCard.jsx'
 import AlbumCard from '../Albums/AlbumCard.jsx'
+import url from '../../apiURL'
 import '../Styles/ProfilePage/Profile.css'
 import axios from 'axios'
 
@@ -28,7 +29,7 @@ class Profile extends Component {
     fetchUserProfile = async() => {
         const {displayedUser} = this.state
         try{
-            let response = await axios.get(`/users/id/${displayedUser.id}`)
+            let response = await axios.get(`${url}/users/id/${displayedUser.id}`)
             const profile = response.data.payload
             console.log(profile)
             this.setState({
@@ -46,7 +47,7 @@ class Profile extends Component {
     fetchUserAlbums = async () => {
         const {displayedUser} = this.state
         try{
-            let response = await axios.get(`/albums/userid/${displayedUser.id}`)
+            let response = await axios.get(`${url}/albums/userid/${displayedUser.id}`)
             const userAlbums = response.data.payload
             console.log(userAlbums)
             this.setState({

@@ -2,6 +2,7 @@ import React from 'react'
 import {useHistory} from 'react-router-dom'
 import '../Styles/Albums/AlbumCard.css'
 
+
 const AlbumCard = ({album}) => {
     let history = useHistory()
 
