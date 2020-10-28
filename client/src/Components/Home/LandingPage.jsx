@@ -22,7 +22,7 @@ class LandingPage extends Component {
 
     fetchUserList = async () => {
         try{
-            let response = await axios.get(`${url}/users/all`)
+            let response = await axios.get(`https://mytunes-backend.herokuapp.com/users/all`)
             const users = response.data.payload
             this.setState({
                 userSelection: users

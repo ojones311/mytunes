@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import url from '../../apiURL'
 import axios from 'axios'
 
 class AddAlbum extends Component {
@@ -18,7 +19,7 @@ class AddAlbum extends Component {
     addAlbumToStorage = async () => {
         const {albumId, userId, name, artist, image} = this.state
         try{
-            await axios.post('/albums', {
+            await axios.post(`${url}/albums`, {
                 id: albumId,
                 user_id: userId,
                 title: name,
@@ -35,7 +36,7 @@ class AddAlbum extends Component {
     }
     redirectToProfilePage = () => {
         this.setState({ 
-            redirect: `/profile/${this.state.userId}`
+            redirect: `${url}/profile/${this.state.userId}`
         })
     }
     render(){
