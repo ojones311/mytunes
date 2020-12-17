@@ -1,9 +1,10 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
 import '../Styles/Albums/AlbumCard.css'
+import DeleteAlbum from './DeleteAlbum'
 
 
-const AlbumCard = ({album}) => {
+const AlbumCard = ({album, user}) => {
     let history = useHistory()
 
     const redirectToAlbumPage = () => {
@@ -29,6 +30,7 @@ const AlbumCard = ({album}) => {
                     <h4 id='album-title'>{album.title}</h4>
                     <h5 id='album-artist'>{album.artist}</h5>
                 </div>
+                <DeleteAlbum album={album} user={user}/>
             </div>
         )
     } 
