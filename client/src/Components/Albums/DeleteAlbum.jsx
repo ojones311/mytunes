@@ -1,4 +1,6 @@
+import axios from 'axios'
 import React,{Component} from 'react'
+import url from '../../apiURL'
 
 
 class DeleteAlbum extends Component {
@@ -11,10 +13,17 @@ class DeleteAlbum extends Component {
     }
 
     deleteAlbum = async () => {
-        console.log('Album deleted')
         const {userId, albumId} = this.state
+        try {
+            await axios.patch(`${url}/albums/delete/${albumId}/${userId}`)
+            console.log('Album deleted')
+        }catch(error){ 
+            console.log('patch-error', error)
+        }  
     }
-
+    fetchUserAlbums = async() => {
+        
+    }
     render(){
         return(
             <div>

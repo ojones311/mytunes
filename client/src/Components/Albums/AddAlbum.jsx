@@ -44,7 +44,7 @@ class AddAlbum extends Component {
             )
         }
         return(
-            <div>
+            <div>  
                 <Button variant='primary' size='lg' onClick={this.addAlbumToStorage}>Add</Button>{' '}
             </div>
         )

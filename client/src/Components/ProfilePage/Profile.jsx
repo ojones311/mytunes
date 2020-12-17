@@ -25,7 +25,9 @@ class Profile extends Component {
        await this.fetchUserProfile();
        await this.fetchUserAlbums();
     }
-
+    componentDidUpdate = async () => {
+        await this.fetchUserAlbums();
+    }
     fetchUserProfile = async() => {
         const {displayedUser} = this.state
         try{
