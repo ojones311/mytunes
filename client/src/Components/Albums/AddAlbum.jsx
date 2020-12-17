@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {Redirect} from 'react-router-dom'
+import {Redirect, withRouter} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import url from '../../apiURL'
 import axios from 'axios'
@@ -27,17 +27,15 @@ class AddAlbum extends Component {
                 album_img_url: image
             })
             console.log('Album added', this.state)
-            // setTimeout(() => {
+            setTimeout(() => {
                 this.redirectToProfilePage()
-            // }, 2000)  
+            }, 2000)  
         }catch(error){
             console.log('fetch err', error)
         }
     }
     redirectToProfilePage = () => {
-        this.setState({ 
-            redirect: `${url}/profile/${this.state.userId}`
-        })
+        this.props.history.push(`/profile/${this.state.userId}`)
     }
     render(){
         if(this.state.redirect){
@@ -54,4 +52,4 @@ class AddAlbum extends Component {
 }
 
 
-export default AddAlbum
+export default withRouter(AddAlbum)

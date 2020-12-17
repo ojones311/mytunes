@@ -71,9 +71,11 @@ class App extends Component {
   renderAlbumPage = (routeProps) => {
     return <AlbumPage {...routeProps} userId={this.state.userId} />
   }
+
   renderAlbumSearchPage = (routeProps) => {
     return <AlbumSearch {...routeProps} userId={this.state.userId} getSpotifyCredentials={this.getSpotifyCredentials} config={this.state.config} data={this.state.data}/>
   }
+  
   renderAboutPage = (routeProps) => {
     return <AboutPage {...routeProps}/>
   }
