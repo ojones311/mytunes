@@ -4,7 +4,7 @@ import '../Styles/Albums/AlbumCard.css'
 import DeleteAlbum from './DeleteAlbum'
 
 
-const AlbumCard = ({album, user}) => {
+const AlbumCard = ({album, user, fetchUserAlbums}) => {
     let history = useHistory()
 
     const redirectToAlbumPage = () => {
@@ -30,7 +30,7 @@ const AlbumCard = ({album, user}) => {
                     <h4 id='album-title'>{album.title}</h4>
                     <h5 id='album-artist'>{album.artist}</h5>
                 </div>
-                <DeleteAlbum album={album} user={user}/>
+                <DeleteAlbum album={album} fetchUserAlbums={fetchUserAlbums} user={user}/>
             </div>
         )
     } 

@@ -17,13 +17,12 @@ class DeleteAlbum extends Component {
         try {
             await axios.patch(`${url}/albums/delete/${albumId}/${userId}`)
             console.log('Album deleted')
+            this.props.fetchUserAlbums()
         }catch(error){ 
             console.log('patch-error', error)
         }  
     }
-    fetchUserAlbums = async() => {
-        
-    }
+    
     render(){
         return(
             <div>

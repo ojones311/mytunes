@@ -8,8 +8,8 @@ import axios from 'axios'
 
 
 class Profile extends Component {
-    constructor(props){
-       super(props)
+    constructor(props, context){
+       super(props, context)
        this.state = {
            userId: props.userId,
            userAlbums: [],
@@ -25,8 +25,11 @@ class Profile extends Component {
        await this.fetchUserProfile();
        await this.fetchUserAlbums();
     }
-    componentDidUpdate = async () => {
-        await this.fetchUserAlbums();
+    componentDidUpdate = async (prevProps) => {
+        // if(this.state.userAlbums.length -= this.state.userAlbums.length){
+        //     await this.fetchUserAlbums();
+        // }
+        // console.log(prevProps)  
     }
     fetchUserProfile = async() => {
         const {displayedUser} = this.state
@@ -71,7 +74,7 @@ class Profile extends Component {
             <div className='user-albums'>
                     {userAlbums.map((album) => {
                         return (
-                            <AlbumCard key={album.album_id} album={album} user={displayedUser.id} />
+                            <AlbumCard key={album.album_id} fetchUserAlbums={this.fetchUserAlbums} album={album} user={displayedUser.id} />
                         )
                     })}
                 </div>
