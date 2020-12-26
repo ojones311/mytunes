@@ -6,6 +6,7 @@ const Albums = require('../models/Albums')
 router.get('/', (req, res, next) =>{
     res.send('users rt: Refer to the README on how to navigate routes')
 })
+
 //use pagination to limit data from queries 
 router.get('/all', async (req, res, next) => {
     try{
@@ -24,7 +25,7 @@ router.get('/all', async (req, res, next) => {
     }
 })
 
-router.get('/artist/:artist', async (req,res,next) => {
+router.get('/artist/:artist', async (req, res, next) => {
     const {artist} = req.params
     try{
         const albumByArtist = await Albums.getLocalAlbumsByArtist(artist)

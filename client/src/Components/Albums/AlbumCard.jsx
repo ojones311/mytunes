@@ -14,7 +14,7 @@ const AlbumCard = ({album, user, fetchUserAlbums}) => {
             history.push(`/albums/id/${album.id}`)
         }      
     }
-    if(album){
+    if(user){
         return(
             <div className='album-card'>
                 <div className='album-img'>
@@ -33,7 +33,25 @@ const AlbumCard = ({album, user, fetchUserAlbums}) => {
                 <DeleteAlbum album={album} fetchUserAlbums={fetchUserAlbums} user={user}/>
             </div>
         )
-    } 
+    }else{
+        return(
+            <div className='album-card'>
+                <div className='album-img'>
+                    <img 
+                        src={album.album_img_url} 
+                        // onClick={redirectToAlbumPage}
+                        alt={album.title} 
+                        width={'200px'} 
+                        height={'200px'}
+                    />
+                </div>
+                <div className='album-info'>
+                    <h4 id='album-title'>{album.title}</h4>
+                    <h5 id='album-artist'>{album.artist}</h5>
+                </div>
+            </div>
+        )
+    }
 }
 
 

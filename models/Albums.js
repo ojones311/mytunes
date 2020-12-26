@@ -77,8 +77,7 @@ createRelationInUserAlbums = async (album) => {
 }
 getAllRelations= async () => {
     try{
-        const relations = await db.any(`SELECT * FROM users_albums`)
-
+        const relations = await db.any(`SELECT * FROM users_albums WHERE is_deleted = false ORDER BY user_id`)
         return relations
     }catch(error){
         console.log('mod err', error)

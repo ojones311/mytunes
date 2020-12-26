@@ -14,8 +14,20 @@ class AlbumList extends Component {
         }
     }
     
-    componentDidMount = async() => {
+    componentDidMount = async () => {
        await this.fetchAlbumList()
+       await this.getUserList()
+    }
+    
+    getUserList = async () => {
+        try{
+            let response = await axios.get(`${url}/users/all`)
+            const allUsers = response.data.payload
+            console.log(allUsers)
+            return allUsers
+        }catch(error){
+            console.log('err', error)
+        }
     }
 
     fetchAlbumList = async () => {
@@ -25,10 +37,16 @@ class AlbumList extends Component {
             this.setState({
                 albumList: albums
             })
+            console.log(albums)
         }catch(error){
             console.log('err', error)
         }
     }
+    // filterAlbumList = async () => {
+    //     let filteredAlbums = this.state.albums.filter((album) => {
+    //         return album
+    //     })
+    // }
     
     render(){
         const {albumList} = this.state
