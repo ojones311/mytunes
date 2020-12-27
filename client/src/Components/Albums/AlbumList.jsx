@@ -46,7 +46,7 @@ class AlbumList extends Component {
     filterAlbumList = async (albums) => {
         let ids = {}
         let filteredArr = []
-        albums.map((elem,i) => {
+        albums.map((elem) => {
             if(!ids[elem.album_id]){
                 ids[elem.album_id] = true
                 filteredArr.push(elem)
