@@ -32,21 +32,28 @@ class AlbumList extends Component {
 
     fetchAlbumList = async () => {
         try{
-            let response = await axios.get(`${url}/albums/all`)
-            const albums =  response.data.payload
+            let response = await axios.get(`${url}/albums/relations/undeleted`)
+            const albums = response.data.payload
+           let filteredArr = await this.filterAlbumList(albums)
             this.setState({
-                albumList: albums
+                albumList: filteredArr
             })
-            console.log(albums)
+            console.log('albums',albums)
         }catch(error){
             console.log('err', error)
         }
     }
-    // filterAlbumList = async () => {
-    //     let filteredAlbums = this.state.albums.filter((album) => {
-    //         return album
-    //     })
-    // }
+    filterAlbumList = async (albums) => {
+        let ids = {}
+        let filteredArr = []
+        albums.map((elem,i) => {
+            if(!ids[elem.album_id]){
+                ids[elem.album_id] = true
+                filteredArr.push(elem)
+            }
+        })
+        return filteredArr
+    }
     
     render(){
         const {albumList} = this.state

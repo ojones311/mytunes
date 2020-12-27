@@ -120,6 +120,24 @@ router.get('/relations',  async (req, res, next) => {
         })
     }
 })
+
+router.get('/relations/undeleted',  async (req, res, next) => {
+    try{
+        const undeletedAlbumRelation = await Albums.getUndeletedAlbumsOtherUsersOwn()
+        res.json({
+            payload: undeletedAlbumRelation,
+            msg: 'Getting all album relations that are undeleted',
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg:'Error getting all undeleted relations',
+            err: true
+        })
+    }
+})
+
 router.patch('/delete/:albumId/:userId', async (req, res, next) => {
     const {albumId, userId} = req.params
     try{

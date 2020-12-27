@@ -77,8 +77,16 @@ createRelationInUserAlbums = async (album) => {
 }
 getAllRelations= async () => {
     try{
-        const relations = await db.any(`SELECT * FROM users_albums WHERE is_deleted = false ORDER BY user_id`)
+        const relations = await db.any(`SELECT * FROM users_albums ORDER BY user_id`)
         return relations
+    }catch(error){
+        console.log('mod err', error)
+    }
+}
+getUndeletedAlbumsOtherUsersOwn = async () => {
+    try{
+        const undeletedAlbums = await db.any(`SELECT users_albums.user_id, users_albums.album_id, users_albums.is_deleted, albums.title, albums.artist, albums.album_img_url FROM users_albums INNER JOIN albums ON albums.id = users_albums.album_id WHERE is_deleted=false`)
+        return undeletedAlbums
     }catch(error){
         console.log('mod err', error)
     }
@@ -102,5 +110,6 @@ module.exports = {
     addAlbumToProfile,
     createRelationInUserAlbums,
     getAllRelations,
+    getUndeletedAlbumsOtherUsersOwn,
     deleteAlbum
 }
