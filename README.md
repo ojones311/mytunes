@@ -89,4 +89,4 @@ Uses React for the client and React Bootstrap for CSS and styling
 | `/about`     | Shows short description this app  |  
 
 ## Live Demo
-www.ojonesdev.netlify.app
+https://mytunesoj.netlify.app/
